@@ -20,22 +20,25 @@ disponivel BOOLEAN
 CREATE table IF NOT EXISTS quarto_simples
 (
 id INTEGER  PRIMARY KEY NOT NULL,
+quarto_id INTEGER NOT NULL,
 FOREIGN KEY (quarto_id) REFERENCES quarto(id),
-valor_diaria preco double DEFAULT 0.0
+valor_diaria double DEFAULT 0.0
 );
 
 CREATE table IF NOT EXISTS quarto_luxo
 (
 id INTEGER PRIMARY KEY NOT NULL,
+quarto_id INTEGER NOT NULL,
 FOREIGN KEY (quarto_id) REFERENCES quarto(id),
-valor_diaria preco double DEFAULT 0.0
+valor_diaria double DEFAULT 0.0
 );
 
 CREATE table IF NOT EXISTS suite
 (
 id INTEGER PRIMARY KEY NOT NULL,
+quarto_id INTEGER NOT NULL,
 FOREIGN KEY (quarto_id) REFERENCES quarto(id),
-valor_diaria preco double DEFAULT 0.0
+valor_diaria double DEFAULT 0.0
 );
 
 CREATE table IF NOT EXISTS funcionario
@@ -46,9 +49,10 @@ cpf VARCHAR(12),
 sexo VARCHAR(50)
 );
 
-CREATE table IF NOT EXISTS recpcionista
+CREATE table IF NOT EXISTS recepcionista
 (
 id INTEGER PRIMARY KEY NOT NULL,
+func_id  INTEGER NOT NULL,
 FOREIGN KEY (func_id) REFERENCES funcionario(id)
 );
 
@@ -63,7 +67,10 @@ preco double DEFAULT 0.0
 CREATE table IF NOT EXISTS reserva
 (
 id INTEGER PRIMARY KEY NOT NULL,
-FOREIGN KEY (func_id) REFERENCES funcionario(id),
+recep_id  INTEGER NOT NULL,
+hosp_id  INTEGER NOT NULL,
+quarto_id  INTEGER NOT NULL,
+FOREIGN KEY (recep_id) REFERENCES recepcionista(id),
 FOREIGN KEY (hosp_id) REFERENCES hospede(id),
 FOREIGN KEY (quarto_id) REFERENCES quarto(id),
 data_inicio DATE not null,
@@ -73,11 +80,8 @@ data_fim DATE default null
 CREATE table IF NOT EXISTS reserva_servico
 (
 id INTEGER PRIMARY KEY NOT NULL,
+reserv_id  INTEGER NOT NULL,
+servic_id  INTEGER NOT NULL,
 FOREIGN KEY (reserv_id) REFERENCES reserva(id),
 FOREIGN KEY (servic_id) REFERENCES servico(id)
 );
-
-
-
-
-
