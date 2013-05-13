@@ -11,3 +11,4 @@ try {
 }catch (PDOException $ex){
 	echo $ex->getMessage();
 }
+echo "<br>teste 123";
