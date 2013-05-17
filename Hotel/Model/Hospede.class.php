@@ -1,10 +1,20 @@
 <?php
-class Hospede {
+require_once '/Hospede.class.php';
+require_once '/PDOConnectionFactory.class.php';
+require_once '/model.interface.php';
+class Hospede implements model {
+	private $connection;
 	private $id;
 	private $nome;
 	private $cpf;
 	private $sexo;
 
+	public function Hospede(){
+		$con = new PDOConnectionFactory();
+		$this->connection = $con->getConnection();
+		echo "OK esta connectando";
+	}
+	
 	public function getId() {
 		return $this->id;
 	}
@@ -36,5 +46,16 @@ class Hospede {
 	public function setId($id) {
 		$this->id = $id;
 	}
-
+	
+	public function save(){
+		// lógica necessária para salvar
+	}
+	public function delete(){
+		// lógica necessária para excluir
+	}
+	
+	public function SelectById($Id){
+		// lógica necessária para selecionar
+	}
 }
+new Hospede();
