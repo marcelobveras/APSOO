@@ -1,10 +1,19 @@
 <?php
-class Quarto {
+require_once '/Hospede.class.php';
+require_once '/PDOConnectionFactory.class.php';
+require_once '/model.interface.php';
+class Quarto implements model {
+	private $connection;
 	private $id;
 	private $nome;
 	private $numero;
 	private $disponivel;
 
+	public function Quarto(){
+		$con = new PDOConnectionFactory();
+		$this->connection = $con->getConnection();
+	}
+	
 	public function getId() {
 		return $this->id;
 	}
@@ -35,6 +44,51 @@ class Quarto {
 
 	public function setId($id) {
 		$this->id = $id;
+	}
+	
+	public function save(){
+		$stmt = $this->connection->prepare("INSERT INTO quarto (nome, numero, disponível)
+			VALUES (?,?,1)") or die(mysql_error());
+	
+		$stmt->bindValue(1, $this->getNome());
+		$stmt->bindValue(2, $this->getNumero());
+		$stmt->bindValue(3, $this->getDisponivel());
+	
+		return $stmt->execute();
+	}
+	public function delete(){
+		$stmt = $this->connection->prepare("DELETE FROM quarto WHERE id = ?") or die(mysql_error());
+		$stmt->bindValue(1, $this->getId());
+		return $stmt->execute();
+	}
+	
+	public function SelectById($Id){
+		$stmt = $this->connection->prepare("SELECT * FROM quarto WHERE id = ?") or die(mysql_error());
+		$stmt->bindValue(1, $Id);
+		$stmt->execute();
+		$row = $stmt->fetch();
+		//var_dump($row);
+		$this->setId($row['id']);
+		$this->setNome($row['nome']);
+		$this->setNumero($row['numero']);
+		return $row;
+	}
+	
+	public function ListAll(){
+		$all;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT * FROM quarto", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+				
+			$all[$ind]['id'] = $row[0];
+			$all[$ind]['nome'] = $row[1];
+			$all[$ind]['cpf'] = $row[2];
+			$all[$ind]['disp'] = $row[3];
+			$ind++;
+		}
+		return $all;
 	}
 
 }
