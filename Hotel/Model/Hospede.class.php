@@ -36,7 +36,7 @@ class Hospede implements model {
 	}
 
 	public function setCpf($cpf) {
-		$this->id = $cpf;
+		$this->cpf = $cpf;
 	}
 
 	public function setSexo($sexo) {
@@ -48,14 +48,26 @@ class Hospede implements model {
 	}
 	
 	public function save(){
-		// lógica necessária para salvar
+		
+		$stmt = $this->connection->prepare("INSERT INTO hospede (nome, cpf, sexo)
+			VALUES (?,?,?)") or die(mysql_error());
+		
+		$stmt->bindValue(1, $this->getNome());
+		$stmt->bindValue(2, $this->getCpf());
+		$stmt->bindValue(3, $this->getSexo());
+	
+		$stmt->execute();
 	}
 	public function delete(){
 		// lógica necessária para excluir
 	}
 	
 	public function SelectById($Id){
-		// lógica necessária para selecionar
+		
 	}
 }
-new Hospede();
+$h = new Hospede();
+$h->setNome("Marcelo");
+$h->setCpf("03678242308");
+$h->setSexo("M");
+$h->save() or die(mysql_error());
