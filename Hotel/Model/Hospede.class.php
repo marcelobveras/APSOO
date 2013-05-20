@@ -12,7 +12,6 @@ class Hospede implements model {
 	public function Hospede(){
 		$con = new PDOConnectionFactory();
 		$this->connection = $con->getConnection();
-		echo "OK esta connectando";
 	}
 	
 	public function getId() {
@@ -55,12 +54,12 @@ class Hospede implements model {
 		$stmt->bindValue(2, $this->getCpf());
 		$stmt->bindValue(3, $this->getSexo());
 	
-		$stmt->execute();
+		return $stmt->execute();
 	}
 	public function delete(){
 		$stmt = $this->connection->prepare("DELETE FROM hospede WHERE id = ?") or die(mysql_error());
 		$stmt->bindValue(1, $this->getId());
-		$stmt->execute();
+		return $stmt->execute();
 	}
 	
 	public function SelectById($Id){
@@ -73,13 +72,26 @@ class Hospede implements model {
 		$this->setNome($row['nome']);
 		$this->setCpf($row['cpf']);
 		$this->setSexo($row['sexo']);
-		
-		if($this->setId($row['id']) == NULL) return false;
+		return $row;
+	}
+	
+	public function ListAll(){
+		$all;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT * FROM hospede", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) 
+		{
+			
+			$all[$ind]['id'] = $row[0];
+			$all[$ind]['nome'] = $row[1];
+			$all[$ind]['cpf'] = $row[2];
+			$all[$ind]['sexo'] = $row[3];		
+			$ind++;	
+		}	
+		return $all;
 	}
 }
 $h = new Hospede();
-$ok = $h->SelectById(3);
-echo"<br>". $h->getId();
-echo"<br>". $h->getNome();
-echo"<br>". $h->getCpf();
-echo"<br>". $h->getSexo();
+$lista = $h->ListAll();
+var_dump($lista);
