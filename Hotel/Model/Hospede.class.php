@@ -48,7 +48,6 @@ class Hospede implements model {
 	}
 	
 	public function save(){
-		
 		$stmt = $this->connection->prepare("INSERT INTO hospede (nome, cpf, sexo)
 			VALUES (?,?,?)") or die(mysql_error());
 		
@@ -59,15 +58,28 @@ class Hospede implements model {
 		$stmt->execute();
 	}
 	public function delete(){
-		// lógica necessária para excluir
+		$stmt = $this->connection->prepare("DELETE FROM hospede WHERE id = ?") or die(mysql_error());
+		$stmt->bindValue(1, $this->getId());
+		$stmt->execute();
 	}
 	
 	public function SelectById($Id){
+		$stmt = $this->connection->prepare("SELECT * FROM hospede WHERE id = ?") or die(mysql_error());
+		$stmt->bindValue(1, $Id);
+		$stmt->execute();
+		$row = $stmt->fetch();
+		//var_dump($row);
+		$this->setId($row['id']);
+		$this->setNome($row['nome']);
+		$this->setCpf($row['cpf']);
+		$this->setSexo($row['sexo']);
 		
+		if($this->setId($row['id']) == NULL) return false;
 	}
 }
 $h = new Hospede();
-$h->setNome("Marcelo");
-$h->setCpf("03678242308");
-$h->setSexo("M");
-$h->save() or die(mysql_error());
+$ok = $h->SelectById(3);
+echo"<br>". $h->getId();
+echo"<br>". $h->getNome();
+echo"<br>". $h->getCpf();
+echo"<br>". $h->getSexo();
