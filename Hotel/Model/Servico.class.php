@@ -1,6 +1,6 @@
 <?php
-require_once '/PDOConnectionFactory.class.php';
-require_once '/model.interface.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/PDOConnectionFactory.class.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/model.interface.php';
 class Servico implements model {
 	private $connection;
 	private $id;
@@ -8,7 +8,7 @@ class Servico implements model {
 	private $descricao;
 	private $preco;
 
-	public function Hospede(){
+	public function Servico(){
 		$con = new PDOConnectionFactory();
 		$this->connection = $con->getConnection();
 	}
@@ -69,8 +69,8 @@ class Servico implements model {
 		//var_dump($row);
 		$this->setId($row['id']);
 		$this->setNome($row['nome']);
-		$this->setCpf($row['desc']);
-		$this->setSexo($row['preco']);
+		$this->setDescricao($row['descricao']);
+		$this->setPreco($row['preco']);
 		return $row;
 	}
 	
@@ -81,7 +81,6 @@ class Servico implements model {
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
 		{
-				
 			$all[$ind]['id'] = $row[0];
 			$all[$ind]['nome'] = $row[1];
 			$all[$ind]['desc'] = $row[2];
