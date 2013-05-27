@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<title></title>
+	<title>Home</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
@@ -12,10 +12,17 @@
 <body>
 
 <div id="wrapper">
-
 	<header id="header">
-		<strong>Header:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tortor. Praesent dictum, libero ut tempus dictum, neque eros elementum mauris, quis mollis arcu velit ac diam. Etiam neque. Quisque nec turpis. Aliquam arcu nulla, dictum et, lacinia a, mollis in, ante. Sed eu felis in elit tempor venenatis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ultricies porttitor purus. Proin non tellus at ligula fringilla tristique. Fusce vehicula quam. Curabitur vel tortor vitae pede imperdiet ultrices. Sed tortor.
-	</header><!-- #header-->
+		<strong>Header:</strong> Lorem ipsum dolor sit amet, consectetur
+			adipiscing elit. Cras tortor. Praesent dictum, libero ut tempus
+			dictum, neque eros elementum mauris, quis mollis arcu velit ac diam.
+			Etiam neque. Quisque nec turpis. Aliquam arcu nulla, dictum et,
+			lacinia a, mollis in, ante. Sed eu felis in elit tempor venenatis.
+			Cum sociis natoque penatibus et magnis dis parturient montes,
+			nascetur ridiculus mus. Ut ultricies porttitor purus. Proin non
+			tellus at ligula fringilla tristique. Fusce vehicula quam. Curabitur
+			vel tortor vitae pede imperdiet ultrices. Sed tortor.
+		</header><!-- #header-->
 
 	<section id="middle">
 
