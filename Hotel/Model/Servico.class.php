@@ -1,5 +1,4 @@
 <?php
-require_once '/Hospede.class.php';
 require_once '/PDOConnectionFactory.class.php';
 require_once '/model.interface.php';
 class Servico implements model {
@@ -35,10 +34,10 @@ class Servico implements model {
 	}
 
 	public function setDescricao($descricao) {
-		$this->id = $descricao;
+		$this->descricao = $descricao;
 	}
 
-	public function setPreco() {
+	public function setPreco($preco) {
 		$this->preco = $preco;
 	}
 
@@ -47,7 +46,7 @@ class Servico implements model {
 	}
 	
 	public function save(){
-		$stmt = $this->connection->prepare("INSERT INTO servico (nome, desc, preco)
+		$stmt = $this->connection->prepare("INSERT INTO servico (nome, descricao, preco)
 			VALUES (?,?,?)") or die(mysql_error());
 	
 		$stmt->bindValue(1, $this->getNome());
