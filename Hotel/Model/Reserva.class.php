@@ -89,9 +89,9 @@ class Reserva implements model {
 		$row = $stmt->fetch();
 		//var_dump($row);
 		$this->setId($row['id']);
-		$this->setRecep_id($row['recep']);
-		$this->setHosp_id($row['hosp']);
-		$this->setQuarto_id($row['quarto']);
+		$this->setRecep_id($row['recep_id']);
+		$this->setHosp_id($row['hosp_id']);
+		$this->setQuarto_id($row['quarto_id']);
 		$this->setData_ini($row['data_inicio']);
 		$this->setData_fim($row['data_fim']);
 		$this->check_in($row['check_in']);
