@@ -1,8 +1,7 @@
 <?php
-require_once '/Hospede.class.php';
 require_once '/PDOConnectionFactory.class.php';
 require_once '/model.interface.php';
-class Hospede implements model {
+class Reserva implements model {
 	private $connection;
 	private $id;
 	private $recep_id;
