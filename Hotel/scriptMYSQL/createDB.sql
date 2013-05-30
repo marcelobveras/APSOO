@@ -74,7 +74,8 @@ FOREIGN KEY (recep_id) REFERENCES recepcionista(id),
 FOREIGN KEY (hosp_id) REFERENCES hospede(id),
 FOREIGN KEY (quarto_id) REFERENCES quarto(id),
 data_inicio DATE not null,
-data_fim DATE default null
+data_fim DATE default null,
+check_in boolean default false;
 );
 
 CREATE table IF NOT EXISTS reserva_servico

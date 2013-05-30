@@ -10,6 +10,7 @@ class Hospede implements model {
 	private $quarto_id;
 	private $data_ini;
 	private $data_fim;
+	private $check_in;
 
 	public function Reserva(){
 		$con = new PDOConnectionFactory();
@@ -73,7 +74,7 @@ class Hospede implements model {
 		$stmt->bindValue(3, $this->getQuarto_id());
 		$stmt->bindValue(4, $this->getData_ini());
 		$stmt->bindValue(5, $this->getData_fim());
-	
+		$stmt->bindValue(6, $this->check_in());
 		return $stmt->execute();
 	}
 	public function delete(){
@@ -92,8 +93,9 @@ class Hospede implements model {
 		$this->setRecep_id($row['recep']);
 		$this->setHosp_id($row['hosp']);
 		$this->setQuarto_id($row['quarto']);
-		$this->setData_ini($row['data inicio']);
-		$this->setData_fim($row['data fim']);
+		$this->setData_ini($row['data_inicio']);
+		$this->setData_fim($row['data_fim']);
+		$this->check_in($row['check_in']);
 		return $row;
 	}
 	
@@ -106,11 +108,12 @@ class Hospede implements model {
 		{
 				
 			$all[$ind]['id'] = $row[0];
-			$all[$ind]['recep'] = $row[1];
-			$all[$ind]['hosp'] = $row[2];
-			$all[$ind]['quarto'] = $row[3];
-			$all[$ind]['data inicio'] = $row[4];
-			$all[$ind]['data fim'] = $row[5];
+			$all[$ind]['recep_id'] = $row[1];
+			$all[$ind]['hosp_id'] = $row[2];
+			$all[$ind]['quarto_id'] = $row[3];
+			$all[$ind]['data_inicio'] = $row[4];
+			$all[$ind]['data_fim'] = $row[5];
+			$all[$ind]['check_in'] = $row[5];
 			$ind++;
 		}
 		return $all;
