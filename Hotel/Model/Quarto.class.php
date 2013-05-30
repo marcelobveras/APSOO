@@ -1,5 +1,4 @@
 <?php
-require_once '/Hospede.class.php';
 require_once '/PDOConnectionFactory.class.php';
 require_once '/model.interface.php';
 class Quarto implements model {
@@ -48,7 +47,7 @@ class Quarto implements model {
 	
 	public function save(){
 		$stmt = $this->connection->prepare("INSERT INTO quarto (nome, numero, disponível)
-			VALUES (?,?,1)") or die(mysql_error());
+			VALUES (?,?,?)") or die(mysql_error());
 	
 		$stmt->bindValue(1, $this->getNome());
 		$stmt->bindValue(2, $this->getNumero());
@@ -71,6 +70,7 @@ class Quarto implements model {
 		$this->setId($row['id']);
 		$this->setNome($row['nome']);
 		$this->setNumero($row['numero']);
+		$this->setDisponivel($row['disponivel']);
 		return $row;
 	}
 	
