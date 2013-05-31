@@ -7,5 +7,9 @@ class ServicoControl {
 		$this->Servico = new Servico();
 	}
 	
+	public function ShowAll()
+	{
+		$todos = $this->Servico
+	}
 	
 }
