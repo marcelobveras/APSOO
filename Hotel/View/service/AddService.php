@@ -3,26 +3,39 @@
 <head>
 	<meta charset="utf-8" />
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<title>Check In</title>
+	<title>Home</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen, projection" />
 </head>
 
 <body>
 
 <div id="wrapper">
-
 	<header id="header">
 		<br><br>
-		<h1 align="center">Check In</h1>
+		<h1 align="center">M&amp;M Hotel</h1>
 	</header><!-- #header-->
 
 	<section id="middle">
 
 		<div id="container">
 			<div id="content">
-				<strong>Content:</strong> Sed placerat accumsan ligula. Aliquam felis magna, congue quis, tempus eu, aliquam vitae, ante. Cras neque justo, ultrices at, rhoncus a, facilisis eget, nisl. Quisque vitae pede. Nam et augue. Sed a elit. Ut vel massa. Suspendisse nibh pede, ultrices vitae, ultrices nec, mollis non, nibh. In sit amet pede quis leo vulputate hendrerit. Cras laoreet leo et justo auctor condimentum. Integer id enim. Suspendisse egestas, dui ac egestas mollis, libero orci hendrerit lacus, et malesuada lorem neque ac libero. Morbi tempor pulvinar pede. Donec vel elit.
+				<table>
+				<tr>
+				<td>Nome:</td><td><input width="30"><br>
+				</tr>
+				<tr>
+				<td>Descri&ccedil;&atilde;o:</td><td><input width="30"></td>
+				</tr>
+				<tr>
+				<td>pre&ccedil;o:</td><td><input width="30"></td>
+				</tr>
+				</table>
+				<button>Enviar</button>	
+				
+				
+					
 			</div><!-- #content-->
 		</div><!-- #container-->
 

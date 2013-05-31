@@ -52,7 +52,9 @@ class Servico implements model {
 		$stmt->bindValue(2, $this->getDescricao());
 		$stmt->bindValue(3, $this->getPreco());
 
-		return $stmt->execute();
+		$bool = $stmt->execute();
+		$this->setId(mysql_insert_id());
+		return $bool;
 	}
 	public function delete(){
 		$stmt = $this->connection->prepare("DELETE FROM servico WHERE id = ?") or die(mysql_error());

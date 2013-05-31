@@ -29,4 +29,13 @@ class ServicoControl {
 		</table>
 		<?php 
 	}
+	
+	public function Add($nome, $preco, $descricao)
+	{
+		$this->Servico->setNome($nome);
+		$this->Servico->setPreco($preco);
+		$this->Servico->setDescricao($descricao);
+		$this->Servico->save();
+	}
+	
 }

@@ -28,13 +28,13 @@
 
 		<aside id="sideLeft">
 			<strong>
-			<a href="index.php">Home</a>
+			<a href="/Hotel/view/index.php">Home</a>
 			<br>
-			<a href="Reservas.php">Fazer Reservas</a>
+			<a href="/Hotel/view/Reservas.php">Fazer Reservas</a>
 			<br>
-			<a href="Checkin.php">Fazer Check in</a>
+			<a href="/Hotel/view/Checkin.php">Fazer Check in</a>
 			<br>
-			<a href="Servicos.php">Cadastrar Servicos</a>
+			<a href="/Hotel/view/Servicos.php">Cadastrar Servicos</a>
 			</strong> 	
 		</aside><!-- #sideLeft -->
 

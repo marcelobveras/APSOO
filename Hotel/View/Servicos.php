@@ -26,7 +26,9 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 
 		<div id="container">
 			<div id="content">
-				<button >Novo Servi&ccedil;o</button>
+				<form action="service/AddService.php">
+					<input type="submit" value="Novo Servi&ccedil;o">
+				</form>
 				<br>
 				<br>
 				<?php $serv = new ServicoControl();
@@ -37,13 +39,13 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 
 		<aside id="sideLeft">
 			<strong>
-			<a href="index.php">Home</a>
+			<a href="/Hotel/view/index.php">Home</a>
 			<br>
-			<a href="Reservas.php">Fazer Reservas</a>
+			<a href="/Hotel/view/Reservas.php">Fazer Reservas</a>
 			<br>
-			<a href="Checkin.php">Fazer Check in</a>
+			<a href="/Hotel/view/Checkin.php">Fazer Check in</a>
 			<br>
-			<a href="Servicos.php">Cadastrar Servi&ccedil;os</a>
+			<a href="/Hotel/view/Servicos.php">Cadastrar Servi&ccedil;os</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 
