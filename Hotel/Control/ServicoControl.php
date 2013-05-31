@@ -13,12 +13,14 @@ class ServicoControl {
 		$todos = $this->Servico->ListAll();
 		?><table border='<?php echo ServicoControl::$border;?>'>
 		<tr>
-			<td>Nome</td>
-			<td>Descricao</td>
-			<td>preco</td>
+			<td align="center">&zwnj;&zwnj;</td>
+			<td align="center">Nome</td>
+			<td align="center">Descricao</td>
+			<td align="center">preco</td>
 		</tr>
 		<?php foreach ($todos as $row){?>
 		<tr>
+			<td><button>Editar</button></td>
 		 	<td><?php echo $row['nome']; ?></td>
 			<td><?php echo $row['preco']; ?></td>
 			<td><?php echo $row['descricao']; ?></td>

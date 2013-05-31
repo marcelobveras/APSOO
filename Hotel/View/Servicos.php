@@ -26,6 +26,9 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 
 		<div id="container">
 			<div id="content">
+				<button >Novo Servi&ccedil;o</button>
+				<br>
+				<br>
 				<?php $serv = new ServicoControl();
 					  $serv->ShowAll();
 				?>	
@@ -40,7 +43,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 			<br>
 			<a href="Checkin.php">Fazer Check in</a>
 			<br>
-			<a href="Servicos.php">Cadastrar Servicos</a>
+			<a href="Servicos.php">Cadastrar Servi&ccedil;os</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 
