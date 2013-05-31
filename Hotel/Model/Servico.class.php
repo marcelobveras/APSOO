@@ -12,7 +12,6 @@ class Servico implements model {
 		$con = new PDOConnectionFactory();
 		$this->connection = $con->getConnection();
 	}
-
 	public function getId() {
 		return $this->id;
 	}
@@ -83,7 +82,7 @@ class Servico implements model {
 		{
 			$all[$ind]['id'] = $row[0];
 			$all[$ind]['nome'] = $row[1];
-			$all[$ind]['desc'] = $row[2];
+			$all[$ind]['descricao'] = $row[2];
 			$all[$ind]['preco'] = $row[3];
 			$ind++;
 		}
