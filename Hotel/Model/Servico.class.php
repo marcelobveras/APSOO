@@ -56,6 +56,20 @@ class Servico implements model {
 		$this->setId(mysql_insert_id());
 		return $bool;
 	}
+	
+	public function edit(){
+		$stmt = $this->connection->prepare("UPDATE servico SET 
+				nome=?, descricao=?, preco=? 
+				WHERE id=? ") or die(mysql_error());
+	
+		$stmt->bindValue(1, $this->getNome());
+		$stmt->bindValue(2, $this->getDescricao());
+		$stmt->bindValue(3, $this->getPreco());
+		$stmt->bindValue(4, $this->getId());
+		$bool = $stmt->execute();
+		return $bool;
+	}
+	
 	public function delete(){
 		$stmt = $this->connection->prepare("DELETE FROM servico WHERE id = ?") or die(mysql_error());
 		$stmt->bindValue(1, $this->getId());

@@ -22,8 +22,8 @@ class ServicoControl {
 		</tr>
 		<?php foreach ($todos as $row){?>
 		<tr>
-			<td><button>Deletar</button></td>
-			<td><button>Editar</button></td>
+			<td><a href="/Hotel/View/service/AddService.php?f=<?php echo $row['id'];?>&d=1">Deletar</a></td>
+			<td><a href="/Hotel/View/service/AddService.php?f=<?php echo $row['id'];?>">Editar</a></td>
 			<td style="display:none;"><?php echo $row['id']; ?></td>
 		 	<td><?php echo $row['nome']; ?></td>
 			<td><?php echo $row['preco']; ?></td>
@@ -46,6 +46,20 @@ class ServicoControl {
 		$this->Servico->setPreco($preco);
 		$this->Servico->setDescricao($descricao);
 		$this->Servico->save();
+	}
+	
+	public function Mod($id, $nome, $preco, $descricao)
+	{
+		$this->Servico->setId($id);
+		$this->Servico->setNome($nome);
+		$this->Servico->setPreco($preco);
+		$this->Servico->setDescricao($descricao);
+		$this->Servico->edit();
+	}
+	public function Del($id)
+	{
+		$this->Servico->setId($id);
+		$this->Servico->delete();
 	}
 	
 }
