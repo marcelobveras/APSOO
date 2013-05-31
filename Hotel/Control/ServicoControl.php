@@ -14,13 +14,17 @@ class ServicoControl {
 		?><table border='<?php echo ServicoControl::$border;?>'>
 		<tr>
 			<td align="center">&zwnj;&zwnj;</td>
+			<td align="center">&zwnj;&zwnj;</td>
+			<td align="center" style="display:none;">Id</td>
 			<td align="center">Nome</td>
+			<td align="center">pre&ccedil;o</td>
 			<td align="center">Descricao</td>
-			<td align="center">preco</td>
 		</tr>
 		<?php foreach ($todos as $row){?>
 		<tr>
+			<td><button>Deletar</button></td>
 			<td><button>Editar</button></td>
+			<td style="display:none;"><?php echo $row['id']; ?></td>
 		 	<td><?php echo $row['nome']; ?></td>
 			<td><?php echo $row['preco']; ?></td>
 			<td><?php echo $row['descricao']; ?></td>
@@ -28,6 +32,12 @@ class ServicoControl {
 		<?php } ?>
 		</table>
 		<?php 
+	}
+	
+	public function ServicoI($id)
+	{
+		$serv = $this->Servico->SelectById($id);
+		return $serv;
 	}
 	
 	public function Add($nome, $preco, $descricao)

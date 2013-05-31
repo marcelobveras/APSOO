@@ -1,3 +1,9 @@
+<?php 
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
+if(isset($_GET['f'])) 
+{
+	$f = $_GET['f'];
+}?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,23 +24,46 @@
 	</header><!-- #header-->
 
 	<section id="middle">
-
 		<div id="container">
 			<div id="content">
+		<?php if(!isset($_GET['f'])) { ?>
+			<form action="process.php?funcao=1" method="post">
 				<table>
 				<tr>
-				<td>Nome:</td><td><input width="30"><br>
+				<td>Nome:</td><td><input size="20" maxlength="40"><br>
 				</tr>
 				<tr>
-				<td>Descri&ccedil;&atilde;o:</td><td><input width="30"></td>
+				<td>Descri&ccedil;&atilde;o:</td><td><textarea rows="4" cols="20"></textarea></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input width="30"></td>
+				<td>pre&ccedil;o:</td><td><input size="8" width="30"></td>
 				</tr>
 				</table>
-				<button>Enviar</button>	
-				
-				
+				<input type="submit" value="Salvar">
+				</form>
+				<?php } ?>
+		<?php if(isset($_GET['f'])) 
+			   {
+			   $sc = new ServicoControl();
+			   $serv=$sc->ServicoI($f);
+			   	?>
+				<form action="process.php?funcao=2" method="post">
+				<table border="1">
+				<tr>
+				<td>Nome:</td><td><input value="<?php echo  $serv["nome"];?>" size="20" maxlength="40"><br>
+				</tr>
+				<tr>
+				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea  rows="4" cols="20"><?php echo  $serv["descricao"];?></textarea></td>
+				</tr>
+				<tr>
+				<td>pre&ccedil;o:</td><td><input type="number" value="<?php echo  $serv["preco"];?>" size="8" width="30"></td>
+				</tr>
+				</table>
+				<input type="submit" value="Salvar">
+				</form>
+			<?php 
+			  }
+			?>
 					
 			</div><!-- #content-->
 		</div><!-- #container-->
