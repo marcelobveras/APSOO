@@ -61,7 +61,7 @@ insert into tipo_quarto (descricao,preco) values ("Suíte", 150.00);
 insert into hospede (nome,cpf,sexo) values ("Marcelo", "49104403215", "M");
 insert into hospede (nome,cpf,sexo) values ("Maria", "84756830374", "F");
 insert into hospede (nome,cpf,sexo) values ("Mauricio", "11745208259", "M");
-insert into hospede (nome,cpf,sexo) values ("João", "83743175401", "M");
+insert into hospede (nome,cpf,sexo) values ("Joao", "83743175401", "M");
 
 insert into quarto (nome, tipo_quarto) values ("Simples 1", 1);
 insert into quarto (nome, tipo_quarto) values ("Simples 2", 1);

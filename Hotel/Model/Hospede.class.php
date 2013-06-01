@@ -77,7 +77,7 @@ class Hospede implements model {
 	public function ListAll(){
 		$all;
 		$ind = 0;
-		$stmt = $this->connection->prepare("SELECT * FROM hospede", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt = $this->connection->prepare("SELECT * FROM hospede order by nome", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) 
 		{

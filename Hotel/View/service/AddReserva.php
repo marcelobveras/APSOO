@@ -1,5 +1,6 @@
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/HospedeControl.php';
 if(isset($_GET['f'])) 
 {
 	$f = $_GET['f'];
@@ -30,13 +31,15 @@ if(isset($_GET['f']))
 			<form action="process.php?funcao=1" method="post">
 				<table border="1">
 				<tr>
-				<td>Nome:</td><td><input name="nome" size="20" maxlength="40"><br>
+				<td>Cliente</td>
+				<td><?php $hc = new HospedeControl();
+				 		$hc->ShowAll();  ?></td>
 				</tr>
 				<tr>
-				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20"></textarea></td>
+				<td>Nome</td><td><input name="nome" size="20" width="30"></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input name="preco" size="8" width="30"></td>
+				<td>pre&ccedil;o:</td><td><input name="preco" size="20" width="30"></td>
 				</tr>
 				</table>
 				<input type="submit" value="Salvar">
