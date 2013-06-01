@@ -7,7 +7,7 @@
 			?>
 			  <script type="text/javascript">
 			    alert("Servico Registrado");
-			    history.back();
+			    window.location = '/Hotel/View/Servicos.php';
 			  </script>
 			<?php
 		break;
@@ -17,7 +17,7 @@
 			?>
 			  <script type="text/javascript">
 			    alert("Servico Modificado");
-			    history.back();
+			    window.location = '/Hotel/View/Servicos.php';
 			  </script>
 			<?php
 		break;
@@ -27,7 +27,7 @@
 			?>
 			  <script type="text/javascript">
 			    alert("Servico Excluido");
-			    history.back();
+			    window.location = '/Hotel/View/Servicos.php';
 			  </script>
 			<?php
 		break;

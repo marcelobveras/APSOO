@@ -83,6 +83,7 @@ if(isset($_GET['f']))
 				</tr>
 				</table>
 				<input type="submit" value="Excluir">
+				</form>
 				<?php 
 				}
 			 }

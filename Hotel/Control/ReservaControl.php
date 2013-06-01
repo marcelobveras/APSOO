@@ -36,8 +36,8 @@ class ServicoControl {
 	
 	public function ServicoI($id)
 	{
-		$hosp = $this->Servico->SelectById($id);
-		return $hosp;
+		$serv = $this->Servico->SelectById($id);
+		return $serv;
 	}
 	
 	public function Add($nome, $preco, $descricao)
