@@ -35,7 +35,7 @@
 			<br>
 			<a href="/Hotel/view/Reservas.php">Fazer Reservas</a>
 			<br>
-			<a href="/Hotel/view/Checkin.php">Fazer Check in</a>
+			<a href="/Hotel/view/Checkin.php">Ver Check in</a>
 			<br>
 			<a href="/Hotel/view/Servicos.php">Cadastrar Servicos</a>
 			</strong> 

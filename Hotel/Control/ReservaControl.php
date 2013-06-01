@@ -22,18 +22,21 @@ class ReservaControl {
 			<td align="center">Quarto</td>
 			<td align="center">Data Reserva</td>
 		</tr>
-		<?php foreach ($todos as $row){?>
-		<tr>
-			<td><a href="">Cancelar</a></td>
-			<td><a href="">Check In</a></td>
-			<td style="display:none;"><?php echo $row['id']; ?></td>
-			<?php $hosp = new HospedeControl();
-					$quart = new QuartoControl();?>
-		 	<td><?php echo $hosp->HospedeI($row['hosp_id'])['cpf']; ?></td>
-			<td><?php echo $quart->QuartoI($row['quarto_id'])['nome']; ?></td>
-			<td><?php echo $row['data_inicio']; ?></td>
-		</tr>
-		<?php } ?>
+		<?php foreach ($todos as $row){
+			if (!$row['check_in']){
+			?>
+			<tr>
+				<td><a href="">Cancelar</a></td>
+				<td><a href="">Check In</a></td>
+				<td style="display:none;"><?php echo $row['id']; ?></td>
+				<?php $hosp = new HospedeControl();
+						$quart = new QuartoControl();?>
+			 	<td><?php echo $hosp->HospedeI($row['hosp_id'])['cpf']; ?></td>
+				<td><?php echo $quart->QuartoI($row['quarto_id'])['nome']; ?></td>
+				<td><?php echo $row['data_inicio']; ?></td>
+			</tr>
+		<?php }
+			} ?>
 		</table>
 		<?php 
 	}
