@@ -1,6 +1,6 @@
 <?php
 	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Reserva.class.php';
-class ServicoControl {
+class ReservaControl {
 	private $Reserva;
 	public static $border = 1;
 
@@ -34,7 +34,7 @@ class ServicoControl {
 		<?php 
 	}
 	
-	public function ServicoI($id)
+	/* public function ServicoI($id)
 	{
 		$serv = $this->Servico->SelectById($id);
 		return $serv;
@@ -60,6 +60,6 @@ class ServicoControl {
 	{
 		$this->Servico->setId($id);
 		$this->Servico->delete();
-	}
+	} */
 	
 }
