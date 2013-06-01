@@ -4,7 +4,6 @@ require_once '/model.interface.php';
 class Reserva implements model {
 	private $connection;
 	private $id;
-	private $recep_id;
 	private $hosp_id;
 	private $quarto_id;
 	private $data_ini;
@@ -18,10 +17,6 @@ class Reserva implements model {
 	
 	public function getId() {
 		return $this->id;
-	}
-
-	public function getRecep_id() {
-		return $this->recep_id;
 	}
 
 	public function getHosp_id() {
@@ -38,10 +33,6 @@ class Reserva implements model {
 	
 	public function getData_fim() {
 		return $this->data_fim;
-	}
-
-	public function setRecep_id($recep_id) {
-		$this->recep_id = $recep_id;
 	}
 
 	public function setHosp_id($hosp_id) {
@@ -65,15 +56,14 @@ class Reserva implements model {
 	}
 	
 	public function save(){
-		$stmt = $this->connection->prepare("INSERT INTO reserva (recep_id, hosp_id, quarto_id, data_ini, data_fim)
+		$stmt = $this->connection->prepare("INSERT INTO reserva (hosp_id, quarto_id, data_ini, data_fim)
 			VALUES (?,?,?,?,?)") or die(mysql_error());
 	
-		$stmt->bindValue(1, $this->getRecep_id());
-		$stmt->bindValue(2, $this->getHosp_id());
-		$stmt->bindValue(3, $this->getQuarto_id());
-		$stmt->bindValue(4, $this->getData_ini());
-		$stmt->bindValue(5, $this->getData_fim());
-		$stmt->bindValue(6, $this->check_in());
+		$stmt->bindValue(1, $this->getHosp_id());
+		$stmt->bindValue(2, $this->getQuarto_id());
+		$stmt->bindValue(3, $this->getData_ini());
+		$stmt->bindValue(4, $this->getData_fim());
+		$stmt->bindValue(5, $this->check_in());
 		return $stmt->execute();
 	}
 	public function delete(){
@@ -89,7 +79,6 @@ class Reserva implements model {
 		$row = $stmt->fetch();
 		//var_dump($row);
 		$this->setId($row['id']);
-		$this->setRecep_id($row['recep_id']);
 		$this->setHosp_id($row['hosp_id']);
 		$this->setQuarto_id($row['quarto_id']);
 		$this->setData_ini($row['data_inicio']);
@@ -105,13 +94,11 @@ class Reserva implements model {
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
 		{
-				
 			$all[$ind]['id'] = $row[0];
-			$all[$ind]['recep_id'] = $row[1];
-			$all[$ind]['hosp_id'] = $row[2];
-			$all[$ind]['quarto_id'] = $row[3];
-			$all[$ind]['data_inicio'] = $row[4];
-			$all[$ind]['data_fim'] = $row[5];
+			$all[$ind]['hosp_id'] = $row[1];
+			$all[$ind]['quarto_id'] = $row[2];
+			$all[$ind]['data_inicio'] = $row[3];
+			$all[$ind]['data_fim'] = $row[4];
 			$all[$ind]['check_in'] = $row[5];
 			$ind++;
 		}

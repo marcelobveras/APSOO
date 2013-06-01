@@ -1,29 +1,29 @@
 <?php
-	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Servico.class.php';
+	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Reserva.class.php';
 class ServicoControl {
-	private $Servico;
+	private $Reserva;
 	public static $border = 1;
 
-	public function ServicoControl(){
-		$this->Servico = new Servico();
+	public function ReservaControl(){
+		$this->Reserva = new Reserva();
 	}
 	
 	public function ShowAll()
 	{
-		$todos = $this->Servico->ListAll();
+		$todos = $this->Reserva->ListAll();
 		?><table border='<?php echo ServicoControl::$border;?>'>
 		<tr>
 			<td align="center">&zwnj;&zwnj;</td>
 			<td align="center">&zwnj;&zwnj;</td>
 			<td align="center" style="display:none;">Id</td>
-			<td align="center">Nome</td>
-			<td align="center">pre&ccedil;o</td>
-			<td align="center">Descricao</td>
+			<td align="center">CPF Cliente</td>
+			<td align="center">Quarto</td>
+			<td align="center">Data Reserva</td>
 		</tr>
 		<?php foreach ($todos as $row){?>
 		<tr>
-			<td><a href="/Hotel/View/service/AddService.php?f=<?php echo $row['id'];?>&d=1">Deletar</a></td>
-			<td><a href="/Hotel/View/service/AddService.php?f=<?php echo $row['id'];?>">Editar</a></td>
+			<td><a href="">Cancelar</a></td>
+			<td><a href="">Check In</a></td>
 			<td style="display:none;"><?php echo $row['id']; ?></td>
 		 	<td><?php echo $row['nome']; ?></td>
 			<td><?php echo $row['preco']; ?></td>

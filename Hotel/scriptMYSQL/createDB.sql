@@ -26,21 +26,6 @@ tipo_quarto INTEGER NOT NULL,
 FOREIGN KEY (tipo_quarto) REFERENCES tipo_quarto(id)
 );
 
-CREATE table IF NOT EXISTS funcionario
-(
-id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-nome VARCHAR(50),
-cpf VARCHAR(12),
-sexo VARCHAR(50)
-);
-
-CREATE table IF NOT EXISTS recepcionista
-(
-id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-func_id  INTEGER NOT NULL,
-FOREIGN KEY (func_id) REFERENCES funcionario(id)
-);
-
 CREATE table IF NOT EXISTS servico
 (
 id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -52,10 +37,8 @@ preco double DEFAULT 0.0
 CREATE table IF NOT EXISTS reserva
 (
 id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-recep_id  INTEGER NOT NULL,
 hosp_id  INTEGER NOT NULL,
 quarto_id  INTEGER NOT NULL,
-FOREIGN KEY (recep_id) REFERENCES recepcionista(id),
 FOREIGN KEY (hosp_id) REFERENCES hospede(id),
 FOREIGN KEY (quarto_id) REFERENCES quarto(id),
 data_inicio DATE not null,
