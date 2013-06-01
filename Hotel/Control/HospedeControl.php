@@ -1,10 +1,10 @@
 <?php
 	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Hospede.class.php';
-class ServicoControl {
+class HospedeControl {
 	private $Hospede;
 	public static $border = 1;
 
-	public function ServicoControl(){
+	public function HospedeControl(){
 		$this->Hospede = new Hospede();
 	}
 	
@@ -24,7 +24,7 @@ class ServicoControl {
 	public function HospedeI($id)
 	{
 		$Hospede = $this->Hospede->SelectById($id);
-		return $serv;
+		return $Hospede;
 	}
 	
 	/* public function Add($nome, $preco, $descricao)

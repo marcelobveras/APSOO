@@ -91,8 +91,3 @@ class Hospede implements model {
 		return $all;
 	}
 }
-
-//Testes
-$h = new Hospede();
-$lista = $h->ListAll();
-var_dump($lista[1]);

@@ -1,30 +1,30 @@
 <?php
-	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Hospede.class.php';
-class ServicoControl {
+	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Quarto.class.php';
+class QuartoControl {
 	private $Quarto;
 	public static $border = 1;
 
-	public function ServicoControl(){
+	public function QuartoControl(){
 		$this->Quarto = new Quarto();
 	}
 	
 	public function ShowAll()
 	{
 		$todos = $this->Hospede->ListAll();
-		?><select name="hospede" >
+		?><select name="quarto" >
 			<?php foreach ($todos as $row){?>
 		<option value="id">
-		 	<?php echo $row['cpf']; ?>
+		 	<?php echo $row['nome']; ?>
 		</option>
 		<?php } ?>
 		</select>
 		<?php 
 	}
 	
-	public function HospedeI($id)
+	public function QuartoI($id)
 	{
-		$Hospede = $this->Hospede->SelectById($id);
-		return $serv;
+		$quarto = $this->Quarto->SelectById($id);
+		return $quarto;
 	}
 	
 	/* public function Add($nome, $preco, $descricao)

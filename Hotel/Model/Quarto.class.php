@@ -5,10 +5,9 @@ class Quarto implements model {
 	private $connection;
 	private $id;
 	private $nome;
-	private $numero;
 	private $disponivel;
 	private $tipo;
-	private $preco;
+
 
 	public function Quarto(){
 		$con = new PDOConnectionFactory();
@@ -23,10 +22,6 @@ class Quarto implements model {
 		return $this->nome;
 	}
 
-	public function getNumero() {
-		return $this->numero;
-	}
-
 	public function getDisponivel() {
 		return $this->disponivel;
 	}
@@ -35,16 +30,9 @@ class Quarto implements model {
 		return $this->tipo;
 	}
 	
-	public function getPreco() {
-		return $this->preco;
-	}
 
 	public function setNome($nome) {
 		$this->nome = $nome;
-	}
-
-	public function setNumero($numero) {
-		$this->id = $numero;
 	}
 
 	public function setDisponivel($disponivel) {
@@ -59,18 +47,14 @@ class Quarto implements model {
 		$this->tipo = $tipo;
 	}
 	
-	public function setPreco($preco) {
-		$this->preco = $preco;
-	}
-	
+
 	public function save(){
-		$stmt = $this->connection->prepare("INSERT INTO quarto (nome, numero, disponivel, tipo)
+		$stmt = $this->connection->prepare("INSERT INTO quarto (nome, disponivel, tipo_quarto)
 			VALUES (?,?,?") or die(mysql_error());
 	
 		$stmt->bindValue(1, $this->getNome());
-		$stmt->bindValue(2, $this->getNumero());
-		$stmt->bindValue(3, $this->getDisponivel());
-		$stmt->bindValue(4, $this->getTipo());
+		$stmt->bindValue(2, $this->getDisponivel());
+		$stmt->bindValue(3, $this->getTipo());
 	
 		return $stmt->execute();
 	}
@@ -88,10 +72,8 @@ class Quarto implements model {
 		//var_dump($row);
 		$this->setId($row['id']);
 		$this->setNome($row['nome']);
-		$this->setNumero($row['numero']);
 		$this->setDisponivel($row['disponivel']);
-		$this->tipo($row['tipo']);
-		$this->preco($row['preco']);
+		$this->setTipo($row['tipo_quarto']);
 		return $row;
 	}
 	
