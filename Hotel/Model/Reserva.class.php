@@ -34,37 +34,43 @@ class Reserva implements model {
 	public function getData_fim() {
 		return $this->data_fim;
 	}
-
-	public function setHosp_id($hosp_id) {
-		$this->id = $hosp_id;
+	
+	public function getCheck_in() {
+		return $this->check_in;
 	}
 
-	public function setQuarto_id() {
+	public function setHosp_id($hosp_id) {
+		$this->hosp_id = $hosp_id;
+	}
+
+	public function setQuarto_id($quarto_id) {
 		$this->quarto_id = $quarto_id;
 	}
 	
-	public function setData_ini() {
-		$this->data_ini = $data_ini;
+	public function setData_ini($data) {
+		$this->data_ini = $data;
 	}
 
-	public function setData_fim() {
-		$this->data_fim = $data_fim;
+	public function setData_fim($data) {
+		$this->data_fim = $data;
 	}
 
 	public function setId($id) {
 		$this->id = $id;
 	}
 	
-	public function save(){
-		$stmt = $this->connection->prepare("INSERT INTO reserva (hosp_id, quarto_id, data_ini, data_fim)
-			VALUES (?,?,?,?,?)") or die(mysql_error());
+	public function setCheck_in($check_in) {
+		$this->check_in = $check_in;
+	}
 	
+	public function save(){
+		$stmt = $this->connection->prepare("INSERT INTO reserva (hosp_id, quarto_id, data_inicio)
+			VALUES (?,?,?)") or die(mysql_error());
+		echo $this->getCheck_in();
 		$stmt->bindValue(1, $this->getHosp_id());
 		$stmt->bindValue(2, $this->getQuarto_id());
 		$stmt->bindValue(3, $this->getData_ini());
-		$stmt->bindValue(4, $this->getData_fim());
-		$stmt->bindValue(5, $this->check_in());
-		return $stmt->execute();
+		$stmt->execute() or die(mysql_errno());
 	}
 	public function delete(){
 		$stmt = $this->connection->prepare("DELETE FROM reserva WHERE id = ?") or die(mysql_error());

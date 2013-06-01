@@ -41,19 +41,24 @@ class ReservaControl {
 		<?php 
 	}
 	
+	public function Add($hosp_id, $quarto_id, $dataIni)
+	{
+		
+		$this->Reserva->setHosp_id($hosp_id);
+		$this->Reserva->setQuarto_id($quarto_id);
+		$this->Reserva->setData_ini($dataIni);
+		$this->Reserva->setData_fim(null);
+		$this->Reserva->setCheck_in(false);
+		$this->Reserva->save();
+	}
+	
 	/* public function ServicoI($id)
 	{
 		$serv = $this->Servico->SelectById($id);
 		return $serv;
 	}
 	
-	public function Add($nome, $preco, $descricao)
-	{
-		$this->Servico->setNome($nome);
-		$this->Servico->setPreco($preco);
-		$this->Servico->setDescricao($descricao);
-		$this->Servico->save();
-	}
+	
 	
 	public function Mod($id, $nome, $preco, $descricao)
 	{

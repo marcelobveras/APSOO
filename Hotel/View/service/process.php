@@ -1,5 +1,6 @@
 <?php
 	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
+	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
 	switch ($_GET['funcao']) {
 		case 1:
 			$serv = new ServicoControl();
@@ -31,6 +32,16 @@
 			  </script>
 			<?php
 		break;
+		case 4:
+			$reserv = new ReservaControl();
+			$reserv->Add($_POST['hospede'], $_POST['quarto'], $_POST['data']);
+			?>
+						  <script type="text/javascript">
+						    alert("Servico Registrado");
+						    window.location = '/Hotel/View/Reservas.php';
+						  </script>
+			<?php			
+			break;
 		default:
 		break;
 	}

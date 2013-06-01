@@ -1,6 +1,7 @@
 <?php 
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/HospedeControl.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/QuartoControl.php';
 if(isset($_GET['f'])) 
 {
 	$f = $_GET['f'];
@@ -28,7 +29,7 @@ if(isset($_GET['f']))
 		<div id="container">
 			<div id="content">
 		<?php if(!isset($_GET['f'])) { ?>
-			<form action="process.php?funcao=1" method="post">
+			<form action="process.php?funcao=4" method="post">
 				<table border="1">
 				<tr>
 				<td>Cliente</td>
@@ -36,10 +37,12 @@ if(isset($_GET['f']))
 				 		$hc->ShowAll();  ?></td>
 				</tr>
 				<tr>
-				<td>Nome</td><td><input name="nome" size="20" width="30"></td>
+				<td>Quarto</td>
+				<td><?php $qu = new QuartoControl();
+				 		$qu->ShowAll();  ?></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input name="preco" size="20" width="30"></td>
+				<td>Data</td><td><input type="date" name="data" size="20" width="30"></td>
 				</tr>
 				</table>
 				<input type="submit" value="Salvar">

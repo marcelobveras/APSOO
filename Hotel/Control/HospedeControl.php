@@ -13,7 +13,7 @@ class HospedeControl {
 		$todos = $this->Hospede->ListAll();
 		?><select name="hospede" >
 			<?php foreach ($todos as $row){?>
-		<option value="id" >
+		<option value="<?php echo $row['id']; ?>" >
 		 	<?php echo $row['nome']; ?>
 		</option>
 		<?php } ?>
