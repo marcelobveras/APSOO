@@ -18,7 +18,6 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 <div id="wrapper">
 
 	<header id="header">
-		<br> <br>
 		<h1 align="center">Manuten&ccedil;&atilde;o de Servi&ccedil;os</h1>
 	</header><!-- #header-->
 
@@ -29,8 +28,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 				<form action="service/AddService.php">
 					<input type="submit" value="Novo Servi&ccedil;o">
 				</form>
-				<br>
-				<br>
+				
 				<?php $serv = new ServicoControl();
 					  $serv->ShowAll();
 				?>	

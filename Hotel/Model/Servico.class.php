@@ -90,7 +90,7 @@ class Servico implements model {
 	}
 
 	public function ListAll(){
-		$all;
+		$all = null;
 		$ind = 0;
 		$stmt = $this->connection->prepare("SELECT * FROM servico", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
 		$stmt->execute();
@@ -102,6 +102,6 @@ class Servico implements model {
 			$all[$ind]['preco'] = $row[3];
 			$ind++;
 		}
-		@return $all;
+		return $all;
 	}
 }
