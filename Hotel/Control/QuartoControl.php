@@ -12,13 +12,22 @@ class QuartoControl {
 	{
 		$todos = $this->Quarto->ListAll();
 		?><select name="quarto" >
-			<?php foreach ($todos as $row){?>
+			<?php foreach ($todos as $row){ 
+			if ( $row['disponivel'] == 1){?>
 		<option value="<?php echo $row['id']; ?>">
 		 	<?php echo $row['nome']; ?>
 		</option>
-		<?php } ?>
+		<?php }
+			} ?>
 		</select>
 		<?php 
+	}
+	
+	public function disponQuarto($id)
+	{
+		$quarto = $this->Quarto->SelectById($id);;
+		$quarto->setDisponivel(!$quarto->getDisponivel());
+		$quarto->edit();
 	}
 	
 	public function QuartoI($id)

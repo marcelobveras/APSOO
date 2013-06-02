@@ -2,6 +2,7 @@
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/HospedeControl.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/QuartoControl.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
 if(isset($_GET['f'])) 
 {
 	$f = $_GET['f'];
@@ -42,7 +43,7 @@ if(isset($_GET['f']))
 				 		$qu->ShowAll();  ?></td>
 				</tr>
 				<tr>
-				<td>Data</td><td><input type="date" name="data" size="20" width="30"></td>
+				<td>Data</td><td><input type="date" name="data" size="20" width="30" readonly></td>
 				</tr>
 				</table>
 				<input type="submit" value="Salvar">
@@ -72,23 +73,26 @@ if(isset($_GET['f']))
 				</form>
 			<?php 
 			  }else{
-				$sc = new ServicoControl();
-				$serv=$sc->ServicoI($f);
+				$sc = new ReservaControl();
+				$serv=$sc->ReservaI($f);
+				$hosp =  new HospedeControl();
+				$quart = new QuartoControl();
 				?>
-				<form action="process.php?funcao=3" method="post">
-				<input name="id" type="hidden" value="<?php echo  $serv["id"]; ?>">
+				<form action="process.php?funcao=6" method="post">
 				<table border="1">
 				<tr>
-				<td>Nome:</td><td><input name="nome" value="<?php echo  $serv["nome"];?>" size="20" maxlength="40" readonly><br>
+				<td>Cliente</td>
+				<td><?php echo $hosp->HospedeI($serv['hosp_id'])['nome'];  ?></td>
 				</tr>
 				<tr>
-				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20" readonly><?php echo  $serv["descricao"];?></textarea></td>
+				<td>Quarto</td>
+				<td><?php echo $quart->QuartoI($serv['quarto_id'])->getNome(); ?></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input name="preco" type="number" value="<?php echo  $serv["preco"];?>" size="8" width="30" readonly></td>
+				<td>Data</td><td><input value="<?php echo $serv['data_inicio'] ?>" type="date" name="data" size="20" width="30"></td>
 				</tr>
 				</table>
-				<input type="submit" value="Excluir">
+				<input type="submit" value="Cancelar Reserva">
 				</form>
 				<?php 
 				}

@@ -23,16 +23,16 @@ class ReservaControl {
 			<td align="center">Data Reserva</td>
 		</tr>
 		<?php foreach ($todos as $row){
-			if (!$row['check_in']){
+			if (!$row['check_in'] && $row['check_in'] != null){
 			?>
 			<tr>
-				<td><a href="">Cancelar</a></td>
+				<td><a href="/Hotel/View/service/AddReserva.php?f=<?php echo $row['id'];?>&d=1">Cancelar</a></td>
 				<td><a href="">Check In</a></td>
 				<td style="display:none;"><?php echo $row['id']; ?></td>
 				<?php $hosp = new HospedeControl();
 						$quart = new QuartoControl();?>
 			 	<td><?php echo $hosp->HospedeI($row['hosp_id'])['cpf']; ?></td>
-				<td><?php echo $quart->QuartoI($row['quarto_id'])['nome']; ?></td>
+				<td><?php echo $quart->QuartoI($row['quarto_id'])->getNome(); ?></td>
 				<td><?php echo $row['data_inicio']; ?></td>
 			</tr>
 		<?php }
@@ -52,11 +52,13 @@ class ReservaControl {
 		$this->Reserva->save();
 	}
 	
-	/* public function ServicoI($id)
+	public function ReservaI($id)
 	{
-		$serv = $this->Servico->SelectById($id);
+		$serv = $this->Reserva->SelectById($id);
 		return $serv;
 	}
+	
+	/* 
 	
 	
 	

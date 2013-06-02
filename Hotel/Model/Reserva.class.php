@@ -89,7 +89,7 @@ class Reserva implements model {
 		$this->setQuarto_id($row['quarto_id']);
 		$this->setData_ini($row['data_inicio']);
 		$this->setData_fim($row['data_fim']);
-		$this->check_in($row['check_in']);
+		$this->setCheck_in($row['check_in']);
 		return $row;
 	}
 	

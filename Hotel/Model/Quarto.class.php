@@ -47,6 +47,18 @@ class Quarto implements model {
 		$this->tipo = $tipo;
 	}
 	
+	public function edit(){
+		$stmt = $this->connection->prepare("UPDATE quarto SET
+				nome=?, disponivel=?, tipo_quarto=?
+				WHERE id=? ") or die(mysql_error());
+	
+		$stmt->bindValue(1, $this->getNome());
+		$stmt->bindValue(2, $this->getDisponivel());
+		$stmt->bindValue(3, $this->getTipo());
+		$stmt->bindValue(4, $this->getId());
+		$bool = $stmt->execute();
+		return $bool;
+	}
 
 	public function save(){
 		$stmt = $this->connection->prepare("INSERT INTO quarto (nome, disponivel, tipo_quarto)
@@ -74,7 +86,7 @@ class Quarto implements model {
 		$this->setNome($row['nome']);
 		$this->setDisponivel($row['disponivel']);
 		$this->setTipo($row['tipo_quarto']);
-		return $row;
+		return $this;
 	}
 	
 	public function ListAll(){
@@ -87,8 +99,8 @@ class Quarto implements model {
 				
 			$all[$ind]['id'] = $row[0];
 			$all[$ind]['nome'] = $row[1];
-			$all[$ind]['cpf'] = $row[2];
-			$all[$ind]['disp'] = $row[3];
+			$all[$ind]['disponivel'] = $row[2];
+			$all[$ind]['tipo'] = $row[3];
 			$ind++;
 		}
 		return $all;
