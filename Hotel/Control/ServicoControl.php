@@ -20,7 +20,9 @@ class ServicoControl {
 			<td align="center">pre&ccedil;o</td>
 			<td align="center">Descricao</td>
 		</tr>
-		<?php foreach ($todos as $row){?>
+		<?php
+		if($todos != null){ 
+			foreach ($todos as $row){?>
 		<tr>
 			<td><a href="/Hotel/View/service/AddService.php?f=<?php echo $row['id'];?>&d=1">Deletar</a></td>
 			<td><a href="/Hotel/View/service/AddService.php?f=<?php echo $row['id'];?>">Editar</a></td>
@@ -29,7 +31,8 @@ class ServicoControl {
 			<td><?php echo $row['preco']; ?></td>
 			<td><?php echo $row['descricao']; ?></td>
 		</tr>
-		<?php } ?>
+		<?php }
+		} ?>
 		</table>
 		<?php 
 	}

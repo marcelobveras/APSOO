@@ -86,7 +86,7 @@ class Servico implements model {
 		$this->setNome($row['nome']);
 		$this->setDescricao($row['descricao']);
 		$this->setPreco($row['preco']);
-		return $row;
+		return $this;
 	}
 
 	public function ListAll(){
@@ -102,6 +102,6 @@ class Servico implements model {
 			$all[$ind]['preco'] = $row[3];
 			$ind++;
 		}
-		return $all;
+		@return $all;
 	}
 }

@@ -33,17 +33,17 @@ if(isset($_GET['f']))
 			<form action="process.php?funcao=4" method="post">
 				<table border="1">
 				<tr>
-				<td>Cliente</td>
+				<td>Cliente:</td>
 				<td><?php $hc = new HospedeControl();
 				 		$hc->ShowAll();  ?></td>
 				</tr>
 				<tr>
-				<td>Quarto</td>
+				<td>Quarto:</td>
 				<td><?php $qu = new QuartoControl();
 				 		$qu->ShowAll();  ?></td>
 				</tr>
 				<tr>
-				<td>Data</td><td><input type="date" name="data" size="20" width="30" readonly></td>
+				<td>Data:</td><td><input type="date" name="data" size="20" width="30" ></td>
 				</tr>
 				</table>
 				<input type="submit" value="Salvar">
@@ -74,22 +74,23 @@ if(isset($_GET['f']))
 			<?php 
 			  }else{
 				$sc = new ReservaControl();
-				$serv=$sc->ReservaI($f);
+				$serv = $sc->ReservaI($f);
 				$hosp =  new HospedeControl();
 				$quart = new QuartoControl();
 				?>
 				<form action="process.php?funcao=6" method="post">
+				<input name="id" type="hidden" value="<?php echo  $serv->getId(); ?>">
 				<table border="1">
 				<tr>
 				<td>Cliente</td>
-				<td><?php echo $hosp->HospedeI($serv['hosp_id'])['nome'];  ?></td>
+				<td><input value="<?php echo $hosp->HospedeI($serv->getHosp_id())['nome']; ?>" name ></td>
 				</tr>
 				<tr>
 				<td>Quarto</td>
-				<td><?php echo $quart->QuartoI($serv['quarto_id'])->getNome(); ?></td>
+				<td><?php echo $quart->QuartoI($serv->getQuarto_id())->getNome(); ?></td>
 				</tr>
 				<tr>
-				<td>Data</td><td><input value="<?php echo $serv['data_inicio'] ?>" type="date" name="data" size="20" width="30"></td>
+				<td>Data</td><td><input value="<?php echo $serv->getData_ini(); ?>" type="date" name="data" size="20" width="30" readonly="readonly"></td>
 				</tr>
 				</table>
 				<input type="submit" value="Cancelar Reserva">

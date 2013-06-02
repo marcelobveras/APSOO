@@ -40,11 +40,23 @@
 			$reserv->Add($_POST['hospede'], $_POST['quarto'], $_POST['data']);
 			?>
 						  <script type="text/javascript">
-						    alert("Servico Registrado");
+						    alert("Reserva Registrada");
 						    window.location = '/Hotel/View/Reservas.php';
 						  </script>
 			<?php			
 			break;
+			case 6:
+				$reserv = new ReservaControl();
+				$qc = new QuartoControl();
+				$qc->disponQuarto($reserv->ReservaI($_POST['id'])->getQuarto_id());
+				$reserv->CancelarI($_POST['id']);
+				?>
+									  <script type="text/javascript">
+									    alert("Reserva Cancelada");
+									    window.location = '/Hotel/View/Reservas.php';
+									  </script>
+				<?php			
+				break;
 		default:
 		break;
 	}

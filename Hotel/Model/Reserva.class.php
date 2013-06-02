@@ -63,6 +63,21 @@ class Reserva implements model {
 		$this->check_in = $check_in;
 	}
 	
+	public function edit(){
+		$stmt = $this->connection->prepare("UPDATE reserva SET
+				hosp_id=?, quarto_id=?, data_inicio=?, data_fim=?, check_in=?
+				WHERE id=? ") or die(mysql_error());
+	
+		$stmt->bindValue(1, $this->getHosp_id());
+		$stmt->bindValue(2, $this->getQuarto_id());
+		$stmt->bindValue(3, $this->getData_ini());
+		$stmt->bindValue(4, $this->getData_fim());
+		$stmt->bindValue(5, $this->getCheck_in());
+		$stmt->bindValue(6, $this->getId());
+		$bool = $stmt->execute();
+		return $bool;
+	}
+	
 	public function save(){
 		$stmt = $this->connection->prepare("INSERT INTO reserva (hosp_id, quarto_id, data_inicio)
 			VALUES (?,?,?)") or die(mysql_error());
@@ -90,7 +105,7 @@ class Reserva implements model {
 		$this->setData_ini($row['data_inicio']);
 		$this->setData_fim($row['data_fim']);
 		$this->setCheck_in($row['check_in']);
-		return $row;
+		return $this;
 	}
 	
 	public function ListAll(){

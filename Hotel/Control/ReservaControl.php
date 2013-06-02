@@ -58,6 +58,13 @@ class ReservaControl {
 		return $serv;
 	}
 	
+	public function CancelarI($id)
+	{
+		$serv = $this->Reserva->SelectById($id);
+		$serv->setCheck_in(null);
+		$serv->edit();
+	}
+	
 	/* 
 	
 	
