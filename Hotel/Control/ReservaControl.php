@@ -72,13 +72,13 @@ class ReservaControl {
 			<?php 
 		}
 	
-	public function Add($hosp_id, $quarto_id, $dataIni)
+	public function Add($hosp_id, $quarto_id, $dataIni, $dataFim)
 	{
 		
 		$this->Reserva->setHosp_id($hosp_id);
 		$this->Reserva->setQuarto_id($quarto_id);
 		$this->Reserva->setData_ini($dataIni);
-		$this->Reserva->setData_fim(null);
+		$this->Reserva->setData_fim($dataFim);
 		$this->Reserva->setCheck_in(false);
 		$this->Reserva->save();
 	}

@@ -80,13 +80,13 @@ class Reserva implements model {
 	
 	public function save(){
 		$stmt = $this->connection->prepare("INSERT INTO reserva (hosp_id, quarto_id, data_inicio, data_fim)
-			VALUES (?,?,?)") or die(mysql_error());
+			VALUES (?,?,?,?)") or die(mysql_error());
 		echo $this->getCheck_in();
 		$stmt->bindValue(1, $this->getHosp_id());
 		$stmt->bindValue(2, $this->getQuarto_id());
 		$stmt->bindValue(3, $this->getData_ini());
-		$stmt->bindValue(3, $this->getData_fim());
-		$stmt->execute() or die(mysql_errno());
+		$stmt->bindValue(4, $this->getData_fim());
+		$stmt->execute() or die(mysql_erro());
 	}
 	public function delete(){
 		$stmt = $this->connection->prepare("DELETE FROM reserva WHERE id = ?") or die(mysql_error());

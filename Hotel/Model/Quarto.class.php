@@ -114,8 +114,8 @@ class Quarto implements model {
 										WHERE q.id = r.quarto_id
 											AND r.data_inicio < ? 
 											AND r.data_fim > ?) ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
-		$stmt->bindValue(1, $this->$datefim());
-		$stmt->bindValue(2, $this->$dateini());
+		$stmt->bindValue(1, $datefim);
+		$stmt->bindValue(2, $dateini);
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
 		{

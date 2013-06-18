@@ -8,16 +8,16 @@ class QuartoControl {
 		$this->Quarto = new Quarto();
 	}
 	
-	public function ShowAll()
+	public function ShowAll($dataini, $datafim)
 	{
-		$todos = $this->Quarto->ListAll();
+		$todos = $this->Quarto->ListAllData($dataini, $datafim);
 		?><select name="quarto" >
 			<?php foreach ($todos as $row){ 
-			if ( $row['disponivel'] == 1){?>
+			?>
 		<option value="<?php echo $row['id']; ?>">
 		 	<?php echo $row['nome']; ?>
 		</option>
-		<?php }
+		<?php 
 			} ?>
 		</select>
 		<?php 

@@ -25,7 +25,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
 
 		<div id="container">
 			<div id="content">
-				<form action="service/AddReserva.php">
+				<form action="/Hotel/view/ReservaData.php">
 					<input type="submit" value="Nova Reserva">
 				</form>
 				<?php $serv = new ReservaControl();

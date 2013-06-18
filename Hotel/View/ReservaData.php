@@ -26,7 +26,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
 		<div id="container">
 			<div id="content">
 				<h2>Periodo de estadia:</h2>
-				<form action="" method="post">
+				<form action="service/AddReserva.php" method="post">
 				<table border="1">
 				<tr>
 				<td>Data inicio:</td><td><input type="date" name="dataIni" size="20" width="30" ></td>

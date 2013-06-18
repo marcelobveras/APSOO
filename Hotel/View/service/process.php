@@ -37,7 +37,7 @@
 			$reserv = new ReservaControl();
 			$qc = new QuartoControl();
 			$qc->disponQuarto($_POST['quarto']);
-			$reserv->Add($_POST['hospede'], $_POST['quarto'], $_POST['data']);
+			$reserv->Add($_POST['hospede'], $_POST['quarto'], $_POST['data'],  $_POST['dataFim']);
 			?>
 						  <script type="text/javascript">
 						    alert("Reserva Registrada");

@@ -40,12 +40,12 @@ if(isset($_GET['f']))
 				<tr>
 				<td>Quarto:</td>
 				<td><?php $qu = new QuartoControl();
-				 		$qu->ShowAll();  ?></td>
-				</tr>
-				<tr>
-				<td>Data:</td><td><input type="date" name="data" size="20" width="30" ></td>
+				 		$qu->ShowAll($_POST['dataIni'], $_POST['dataFim']);  ?></td>
 				</tr>
 				</table>
+				<input type="hidden" name="data" size="20" width="30" readonly value="<?php echo $_POST['dataIni']?>"></td>
+				<input type="hidden" name="dataFim" size="20" width="30" readonly value="<?php echo $_POST['dataFim']?>"></td>
+				
 				<input type="submit" value="Salvar">
 				</form>
 				<?php } ?>
