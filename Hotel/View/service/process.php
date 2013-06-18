@@ -45,6 +45,16 @@
 						  </script>
 			<?php			
 			break;
+			case 5:
+				$reserv = new ReservaControl();
+				$reserv->CheckIn($_POST['id']);
+				?>
+												  <script type="text/javascript">
+												    alert("Check In de cliente realizado");
+												    window.location = '/Hotel/View/Checkin.php';
+												  </script>
+				<?php			
+				break;
 			case 6:
 				$reserv = new ReservaControl();
 				$qc = new QuartoControl();

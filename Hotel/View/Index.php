@@ -31,7 +31,7 @@
 
 		<aside id="sideLeft">
 			<strong>
-			<a href="/view/index.php">Home</a>
+			<a href="/Hotel/view/index.php">Home</a>
 			<br>
 			<a href="/Hotel/view/Reservas.php">Fazer Reservas</a>
 			<br>

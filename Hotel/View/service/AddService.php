@@ -36,7 +36,7 @@ if(isset($_GET['f']))
 				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20"></textarea></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input name="preco" size="8" width="30"></td>
+				<td>pre&ccedil;o:</td><td><input  type="number" step="any" name="preco" size="8" width="30"></td>
 				</tr>
 				</table>
 				<input type="submit" value="Salvar">
@@ -50,16 +50,16 @@ if(isset($_GET['f']))
 			   $serv=$sc->ServicoI($f);
 			   	?>
 				<form action="process.php?funcao=2" method="post">
-				<input name="id" type="hidden" value="<?php echo  $serv["id"]; ?>">
+				<input name="id" type="hidden" value="<?php echo  $serv->getId(); ?>">
 				<table border="1">
 				<tr>
-				<td>Nome:</td><td><input name="nome" value="<?php echo  $serv["nome"];?>" size="20" maxlength="40"><br>
+				<td>Nome:</td><td><input name="nome" value="<?php echo  $serv->getNome();?>" size="20" maxlength="40"><br>
 				</tr>
 				<tr>
-				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20"><?php echo  $serv["descricao"];?></textarea></td>
+				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20"><?php echo  $serv->getDescricao();?></textarea></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input name="preco" type="number" value="<?php echo  $serv["preco"];?>" size="8" width="30"></td>
+				<td>pre&ccedil;o:</td><td><input name="preco"  type="number" step="any" value="<?php echo  $serv->getPreco();?>" size="8" width="30"></td>
 				</tr>
 				</table>
 				<input type="submit" value="Salvar">
@@ -70,16 +70,16 @@ if(isset($_GET['f']))
 				$serv=$sc->ServicoI($f);
 				?>
 				<form action="process.php?funcao=3" method="post">
-				<input name="id" type="hidden" value="<?php echo  $serv["id"]; ?>">
+				<input name="id" type="hidden" value="<?php echo  $serv->getId();; ?>">
 				<table border="1">
 				<tr>
-				<td>Nome:</td><td><input name="nome" value="<?php echo  $serv["nome"];?>" size="20" maxlength="40" readonly><br>
+				<td>Nome:</td><td><input name="nome" value="<?php echo   $serv->getNome();?>" size="20" maxlength="40" readonly><br>
 				</tr>
 				<tr>
-				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20" readonly><?php echo  $serv["descricao"];?></textarea></td>
+				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20" readonly><?php echo   $serv->getDescricao();?></textarea></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input name="preco" type="number" value="<?php echo  $serv["preco"];?>" size="8" width="30" readonly></td>
+				<td>pre&ccedil;o:</td><td><input name="preco"  type="number" step="any" value="<?php echo  $serv->getPreco();?>" size="8" width="30" readonly></td>
 				</tr>
 				</table>
 				<input type="submit" value="Excluir">

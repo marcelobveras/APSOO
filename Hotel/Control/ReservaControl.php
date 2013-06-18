@@ -27,7 +27,7 @@ class ReservaControl {
 			?>
 			<tr>
 				<td><a href="/Hotel/View/service/AddReserva.php?f=<?php echo $row['id'];?>&d=1">Cancelar</a></td>
-				<td><a href="">Check In</a></td>
+				<td><a href="/Hotel/View/service/AddReserva.php?f=<?php echo $row['id'];?>">Check In</a></td>
 				<td style="display:none;"><?php echo $row['id']; ?></td>
 				<?php $hosp = new HospedeControl();
 						$quart = new QuartoControl();?>
@@ -40,6 +40,35 @@ class ReservaControl {
 		</table>
 		<?php 
 	}
+	
+	public function ShowCheckIn()
+	{
+		$todos = $this->Reserva->ListAll();
+		?><table border='<?php echo ReservaControl::$border;?>'>
+			<tr>
+				<td align="center">&zwnj;&zwnj;</td>
+				<td align="center" style="display:none;">Id</td>
+				<td align="center">CPF Cliente</td>
+				<td align="center">Quarto</td>
+				<td align="center">Data Reserva</td>
+			</tr>
+			<?php foreach ($todos as $row){
+				if ($row['check_in'] && $row['check_in'] != null){
+				?>
+				<tr>
+					<td><a href="">Check Out</a></td>
+					<td style="display:none;"><?php echo $row['id']; ?></td>
+					<?php $hosp = new HospedeControl();
+							$quart = new QuartoControl();?>
+				 	<td><?php echo $hosp->HospedeI($row['hosp_id'])['cpf']; ?></td>
+					<td><?php echo $quart->QuartoI($row['quarto_id'])->getNome(); ?></td>
+					<td><?php echo $row['data_inicio']; ?></td>
+				</tr>
+			<?php }
+				} ?>
+			</table>
+			<?php 
+		}
 	
 	public function Add($hosp_id, $quarto_id, $dataIni)
 	{
@@ -62,6 +91,13 @@ class ReservaControl {
 	{
 		$serv = $this->Reserva->SelectById($id);
 		$serv->setCheck_in(null);
+		$serv->edit();
+	}
+	
+	public function CheckIn($id)
+	{
+		$serv = $this->Reserva->SelectById($id);
+		$serv->setCheck_in(true);
 		$serv->edit();
 	}
 	

@@ -35,7 +35,6 @@ class PDOConnectionFactory{
 		}catch ( PDOException $ex ){
 			echo "Erro: ".$ex->getMessage();
 		}
-
 	}
 
 	// desconecta

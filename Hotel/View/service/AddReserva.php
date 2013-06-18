@@ -52,24 +52,27 @@ if(isset($_GET['f']))
 		<?php if(isset($_GET['f'])) 
 			   { if(!isset($_GET['d']))
 			  {
-			  
-			   $sc = new ServicoControl();
-			   $serv=$sc->ServicoI($f);
-			   	?>
-				<form action="process.php?funcao=2" method="post">
-				<input name="id" type="hidden" value="<?php echo  $serv["id"]; ?>">
+			   $sc = new ReservaControl();
+				$serv = $sc->ReservaI($f);
+				$hosp =  new HospedeControl();
+				$quart = new QuartoControl();
+				?>
+				<form action="process.php?funcao=5" method="post">
+				<input name="id" type="hidden" value="<?php echo  $serv->getId(); ?>">
 				<table border="1">
 				<tr>
-				<td>Nome:</td><td><input name="nome" value="<?php echo  $serv["nome"];?>" size="20" maxlength="40"><br>
+				<td>Cliente</td>
+				<td><input value="<?php echo $hosp->HospedeI($serv->getHosp_id())['nome']; ?>" name ></td>
 				</tr>
 				<tr>
-				<td valign="top">Descri&ccedil;&atilde;o:</td><td><textarea name="descricao" rows="4" cols="20"><?php echo  $serv["descricao"];?></textarea></td>
+				<td>Quarto</td>
+				<td><?php echo $quart->QuartoI($serv->getQuarto_id())->getNome(); ?></td>
 				</tr>
 				<tr>
-				<td>pre&ccedil;o:</td><td><input name="preco" type="number" value="<?php echo  $serv["preco"];?>" size="8" width="30"></td>
+				<td>Data</td><td><input value="<?php echo $serv->getData_ini(); ?>" type="date" name="data" size="20" width="30" readonly="readonly"></td>
 				</tr>
 				</table>
-				<input type="submit" value="Salvar">
+				<input type="submit" value="Realizar check in">
 				</form>
 			<?php 
 			  }else{
