@@ -62,7 +62,7 @@ if(isset($_GET['f']))
 				<table border="1">
 				<tr>
 				<td>Cliente</td>
-				<td><input value="<?php echo $hosp->HospedeI($serv->getHosp_id())['nome']; ?>" name ></td>
+				<td><input value="<?php echo $hosp->HospedeI($serv->getHosp_id())['nome']; ?>" ></td>
 				</tr>
 				<tr>
 				<td>Quarto</td>

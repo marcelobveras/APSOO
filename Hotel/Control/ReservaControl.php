@@ -21,6 +21,7 @@ class ReservaControl {
 			<td align="center">CPF Cliente</td>
 			<td align="center">Quarto</td>
 			<td align="center">Data Reserva</td>
+			<td align="center">Data Fim Reserva</td>
 		</tr>
 		<?php foreach ($todos as $row){
 			if (!$row['check_in'] && $row['check_in'] != null){
@@ -34,6 +35,7 @@ class ReservaControl {
 			 	<td><?php echo $hosp->HospedeI($row['hosp_id'])['cpf']; ?></td>
 				<td><?php echo $quart->QuartoI($row['quarto_id'])->getNome(); ?></td>
 				<td><?php echo $row['data_inicio']; ?></td>
+				<td><?php echo $row['data_fim']; ?></td>
 			</tr>
 		<?php }
 			} ?>

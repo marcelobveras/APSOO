@@ -106,12 +106,12 @@ class Quarto implements model {
 		return $all;
 	}
 	
-	public function ListAll($dateini, $datefim){
+	public function ListAllData($dateini, $datefim){
 		$all;
 		$ind = 0;
 		$stmt = $this->connection->prepare("SELECT DISTINCT q.* FROM quarto q 
 					WHERE q.id NOT IN (SELECT q.id FROM quarto q, reserva r 
-										WHERE q.id = r.quarto_id 
+										WHERE q.id = r.quarto_id
 											AND r.data_inicio < ? 
 											AND r.data_fim > ?) ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
 		$stmt->bindValue(1, $this->$datefim());
