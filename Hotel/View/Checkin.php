@@ -25,10 +25,18 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
 
 		<div id="container">
 			<div id="content">
-				
-				<?php $serv = new ReservaControl();
-					  $serv->ShowCheckIn();
-				?>
+				<h2>Periodo de estadia:</h2>
+				<form action="" method="post">
+				<table border="1">
+				<tr>
+				<td>Data inicio:</td><td><input type="date" name="dataIni" size="20" width="30" ></td>
+				</tr>
+				<tr>
+				<td>Data Fim:</td><td><input type="date" name="dataFim" size="20" width="30" ></td>
+				</tr>
+				</table>
+				<input type="submit" value="Enviar">
+				</form>
 			</div><!-- #content-->
 		</div><!-- #container-->
 

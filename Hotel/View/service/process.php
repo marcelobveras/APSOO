@@ -67,6 +67,23 @@
 									  </script>
 				<?php			
 				break;
+				case 4:
+					$reserv = new ReservaControl();
+					$qc = new QuartoControl();
+					$qc->disponQuarto($_POST['quarto']);
+					$reserv->Add($_POST['hospede'], $_POST['quarto'], $_POST['data']);
+					?>
+										  <script type="text/javascript">
+										    alert("Reserva Registrada");
+										    window.location = '/Hotel/View/Reservas.php';
+										  </script>
+					<?php			
+					break;
+				
+								
+								
+				
+				
 		default:
 		break;
 	}
