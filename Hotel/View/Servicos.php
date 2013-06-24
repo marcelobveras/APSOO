@@ -44,6 +44,8 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 			<a href="/Hotel/view/Checkin.php">Ver Check in</a>
 			<br>
 			<a href="/Hotel/view/Servicos.php">Cadastrar Servi&ccedil;os</a>
+			<br>
+			<a href="/Hotel/view/LancarDespesa.php">Lan&ccedil;ar Despesa</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 

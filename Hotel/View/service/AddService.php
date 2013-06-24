@@ -102,6 +102,8 @@ if(isset($_GET['f']))
 			<a href="/Hotel/view/Checkin.php">Ver Check in</a>
 			<br>
 			<a href="/Hotel/view/Servicos.php">Cadastrar Servicos</a>
+			<br>
+			<a href="/Hotel/view/LancarDespesa.php">Lan&ccedil;ar Despesa</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 

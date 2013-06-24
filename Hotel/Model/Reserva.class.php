@@ -126,5 +126,28 @@ class Reserva implements model {
 		}
 		return $all;
 	}
+	
+	public function ListAllData($dateini, $datefim){
+		$all;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT DISTINCT r.* FROM reserva r
+											WHERE r.data_inicio < ?
+											AND r.data_fim > ? ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->bindValue(1, $datefim);
+		$stmt->bindValue(2, $dateini);
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+	
+			$all[$ind]['id'] = $row[0];
+			$all[$ind]['hosp_id'] = $row[1];
+			$all[$ind]['quarto_id'] = $row[2];
+			$all[$ind]['data_inicio'] = $row[3];
+			$all[$ind]['data_fim'] = $row[4];
+			$all[$ind]['check_in'] = $row[5];
+			$ind++;
+		}
+		return $all;
+	}
 
 }

@@ -71,6 +71,9 @@ if(isset($_GET['f']))
 				<tr>
 				<td>Data</td><td><input value="<?php echo $serv->getData_ini(); ?>" type="date" name="data" size="20" width="30" readonly="readonly"></td>
 				</tr>
+				<tr>
+				<td>Data Fim</td><td><input value="<?php echo $serv->getData_fim(); ?>" type="date" name="data" size="20" width="30" readonly="readonly"></td>
+				</tr>
 				</table>
 				<input type="submit" value="Realizar check in">
 				</form>
@@ -116,6 +119,8 @@ if(isset($_GET['f']))
 			<a href="/Hotel/view/Checkin.php">Ver Check in</a>
 			<br>
 			<a href="/Hotel/view/Servicos.php">Cadastrar Servicos</a>
+			<br>
+			<a href="/Hotel/view/LancarDespesa.php">Lan&ccedil;ar Despesa</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 
