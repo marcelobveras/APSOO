@@ -127,14 +127,15 @@ class Reserva implements model {
 		return $all;
 	}
 	
-	public function ListAllData($dateini, $datefim){
-		$all;
+	public function ListAllData($data){
+		$all = null;
 		$ind = 0;
 		$stmt = $this->connection->prepare("SELECT DISTINCT r.* FROM reserva r
-											WHERE r.data_inicio < ?
-											AND r.data_fim > ? ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
-		$stmt->bindValue(1, $datefim);
-		$stmt->bindValue(2, $dateini);
+											WHERE r.data_inicio <= ?
+											AND r.data_fim >= ? ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+	
+		$stmt->bindValue(1, $data);
+		$stmt->bindValue(2, $data);
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
 		{

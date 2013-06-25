@@ -1,3 +1,6 @@
+<?php
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,11 +24,9 @@
 
 		<div id="container">
 			<div id="content">
-				Trabalho de APSOO
-				<br>
-				primeira itera&ccedil;&atilde;o do sistema.
-				<br>
-				Professor: Ara&uacute;jo
+				<?php  $desp  = new ReservaControl();
+						$desp->ShowAllAtivo();
+						?>
 				</div><!-- #content-->
 		</div><!-- #container-->
 

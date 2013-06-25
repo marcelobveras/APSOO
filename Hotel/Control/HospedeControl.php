@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Brazil/East");
 	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Hospede.class.php';
 class HospedeControl {
 	private $Hospede;
