@@ -61,7 +61,7 @@ class ReservaControl {
 				
 			</tr>
 			<?php foreach ($todos as $row){
-				if (!$row['check_in'] && $row['check_in'] != null ){
+				if (!$row['check_in'] && $row['check_in'] != null && $row['data_fim'] >= $date){
 				?>
 				<tr>
 					<td><a>Lan&ccedil;ar</a></td>
