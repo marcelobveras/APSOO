@@ -9,6 +9,30 @@ class ReservaServicoControl {
 		$this->ReservaServico = new Reserva_Servico();
 	}
 	
+	public function showByReserva($id_reserva)
+	{
+		$todos = $this->ReservaServico->SelectByReserva($id_reserva);
+		?><table border='<?php echo ServicoControl::$border;?>'>
+				<tr>
+					<td align="center">&zwnj;&zwnj;</td>
+					<td align="center" style="display:none;">Id</td>
+					<td align="center">Servi&ccedil;o</td>
+				</tr>
+				<?php
+				if($todos != null){ 
+					foreach ($todos as $row){
+						$serv = new ServicoControl();
+						$s = $serv->ServicoI($row['servic_id']);?>
+				<tr>
+					<td><a href="/Hotel/View/service/LancarServico.php?rs=<?php echo $row['id'];?>&d=1">Estornar</a></td>
+					<td style="display:none;"><?php echo $row['id']; ?></td>
+					<td><?php echo $s->getNome(); ?></td>
+				</tr>
+				<?php }
+				} ?>
+				</table>
+				<?php 
+	}
 	
 	public function ReservaServicoI($id)
 	{

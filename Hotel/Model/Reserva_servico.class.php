@@ -62,6 +62,23 @@ class Reserva_Servico {
 		return $this;
 	}
 	
+	public function SelectByReserva($id_reserva){
+		$all;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT * FROM reserva_servico WHERE reserv_id = ?") or die(mysql_error());
+		$stmt->bindValue(1, $id_reserva);
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+				
+			$all[$ind]['id'] = $row[0];
+			$all[$ind]['reserv_id'] = $row[1];
+			$all[$ind]['servic_id'] = $row[2];
+			$ind++;
+		}
+		return $all;
+	}
+	
 	public function ListAll(){
 		$all;
 		$ind = 0;

@@ -57,10 +57,20 @@ if(isset($_GET['f']))
 					}
 					if(isset($_GET['c']) && isset($_GET['e']))
 					{
-						//$rs = new ReservaServicoControl();
-						//$rs->Add($_GET['c'], $_GET['s']);
-						echo "aqui";
+						$rs = new ReservaServicoControl();
+						$rs->showByReserva($_GET['c']);
 					}
+					if(isset($_GET['rs']) && isset($_GET['d']))
+					{
+						$rs = new ReservaServicoControl();
+						$rs->Del($_GET['rs']);
+						?>
+							<script type="text/javascript">
+							  	alert("Despesa Estornada");
+							    window.location = '/Hotel/View/LancarDespesa.php';
+							</script>
+							<?php 
+						}
 				?>	
 			</div><!-- #content-->
 		</div><!-- #container-->
