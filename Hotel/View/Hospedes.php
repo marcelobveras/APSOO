@@ -30,7 +30,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/HospedeControl.php';
 				</form>
 				
 				<?php $serv = new HospedeControl();
-					  $serv->ShowAll();
+					  $serv->ShowAllTable();
 				?>	
 			</div><!-- #content-->
 		</div><!-- #container-->

@@ -67,7 +67,7 @@
 									  </script>
 				<?php			
 				break;
-				case 4:
+				case 7:
 					$reserv = new ReservaControl();
 					$qc = new QuartoControl();
 					$qc->disponQuarto($_POST['quarto']);

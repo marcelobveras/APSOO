@@ -27,19 +27,17 @@ if(isset($_GET['f']))
 		<div id="container">
 			<div id="content">
 		<?php if(!isset($_GET['f'])) { ?>
-			<form action="process.php?funcao=1" method="post">
+			<form action="process.php?funcao=" method="post">
 				<table border="1">
 				<tr>
 				<td>Nome Completo:</td><td><input name="nome" size="30" maxlength="80"><br>
 				</tr>
 				<tr>
-				<td valign="top">CPF:</td><td><input type="number" name="cpf" size="20" maxlength="11"></td>
+				<td valign="top">Numero do documento:</td><td><input type="number" name="cpf" size="20" maxlength="11"></td>
 				</tr>
 				<tr>
-				<td>Endere&ccedil;o:</td><td><input name="endereco" size="50" maxlength="80"></td>
+				<td>Sexo:</td><td><select name="sexo" ><option value="M">Masculino</option><option value="F">Feminino</option>  </select></td>
 				</tr>
-				<tr>
-				<td>Telefone:</td><td><input type="number" name="telefone" size="8"></td>
 				</table>
 				<input type="submit" value="Salvar">
 				</form>
