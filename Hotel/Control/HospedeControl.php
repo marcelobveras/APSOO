@@ -28,7 +28,7 @@ class HospedeControl {
 		return $Hospede;
 	}
 	
-	/* public function Add($nome, $preco, $descricao)
+	 public function Add($nome, $preco, $descricao)
 	{
 		$this->Servico->setNome($nome);
 		$this->Servico->setPreco($preco);
@@ -48,6 +48,6 @@ class HospedeControl {
 	{
 		$this->Servico->setId($id);
 		$this->Servico->delete();
-	} */
+	}
 	
 }
