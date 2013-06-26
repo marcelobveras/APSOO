@@ -39,6 +39,8 @@
 			<br>
 			<a href="/Hotel/view/Servicos.php">Cadastrar Servicos</a>
 			<br>
+			<a href="/Hotel/view/Hospedes.php">Cadastrar H&oacute;spede</a>
+			<br>
 			<a href="/Hotel/view/LancarDespesa.php">Lan&ccedil;ar Despesa</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
