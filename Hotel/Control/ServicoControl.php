@@ -38,6 +38,33 @@ class ServicoControl {
 		<?php 
 	}
 	
+	public function ChoseOne($id_hospede)
+	{
+		$todos = $this->Servico->ListAll();
+		?><table border='<?php echo ServicoControl::$border;?>'>
+			<tr>
+				<td align="center">&zwnj;&zwnj;</td>
+				<td align="center" style="display:none;">Id</td>
+				<td align="center">Nome</td>
+				<td align="center">pre&ccedil;o</td>
+				<td align="center">Descricao</td>
+			</tr>
+			<?php
+			if($todos != null){ 
+				foreach ($todos as $row){?>
+			<tr>
+				<td><a href="/Hotel/View/service/LancarServico.php?c=<?php echo $id_hospede;?>&s=<?php echo $row['id'];?>">Lan&ccedil;ar</a></td>
+				<td style="display:none;"><?php echo $row['id']; ?></td>
+			 	<td><?php echo $row['nome']; ?></td>
+				<td><?php echo $row['preco']; ?></td>
+				<td><?php echo $row['descricao']; ?></td>
+			</tr>
+			<?php }
+			} ?>
+			</table>
+			<?php 
+		}
+	
 	public function ServicoI($id)
 	{
 		$hosp = $this->Servico->SelectById($id);

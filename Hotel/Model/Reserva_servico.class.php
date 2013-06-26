@@ -29,7 +29,7 @@ class Reserva_Servico {
 	}
 
 	public function setServic_id($servic_id) {
-		$this->id = $servic_id;
+		$this->servic_id = $servic_id;
 	}
 
 	public function setId($id) {
@@ -42,7 +42,6 @@ class Reserva_Servico {
 	
 		$stmt->bindValue(1, $this->getReserv_id());
 		$stmt->bindValue(2, $this->getServic_id());
-	
 		return $stmt->execute();
 	}
 	public function delete(){
@@ -60,7 +59,7 @@ class Reserva_Servico {
 		$this->setId($row['id']);
 		$this->setNome($row['reserv_id']);
 		$this->setCpf($row['servic_id']);
-		return $row;
+		return $this;
 	}
 	
 	public function ListAll(){

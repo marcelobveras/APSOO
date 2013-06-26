@@ -55,6 +55,7 @@ class ReservaControl {
 		?><table border='<?php echo ReservaControl::$border;?>'>
 			<tr>
 				<td align="center">&zwnj;&zwnj;</td>
+				<td align="center">&zwnj;&zwnj;</td>
 				<td align="center" style="display:none;">Id</td>
 				<td align="center">Numero do Documento</td>
 				<td align="center">Quarto</td>
@@ -64,7 +65,8 @@ class ReservaControl {
 				if (!$row['check_in'] && $row['check_in'] != null && $row['data_fim'] >= $date){
 				?>
 				<tr>
-					<td><a>Lan&ccedil;ar</a></td>
+				<td><a href="/Hotel/View/service/LancarServico.php?f=<?php echo $row['id'];?>">Escolher Servi&ccedil;o</a></td>
+					<td><a href="/Hotel/View/service/LancarServico.php?c=<?php echo $row['id'];?>&e=1">Extorno</a></td>
 					<td style="display:none;"><?php echo $row['id']; ?></td>
 					<?php $hosp = new HospedeControl();
 							$quart = new QuartoControl();?>
