@@ -3,6 +3,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/HospedeControl.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/QuartoControl.php';
 require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaServicoControl.php';
 if(isset($_GET['f'])) 
 {
 	$f = $_GET['f'];
@@ -29,7 +30,7 @@ if(isset($_GET['f']))
 	<section id="middle">
 		<div id="container">
 			<div id="content">
-		<?php if(!isset($_GET['f'])) { ?>
+		<?php if(!isset($_GET['f']) && !isset($_GET['co'])) { ?>
 			<form action="process.php?funcao=4" method="post">
 				<table border="1">
 				<tr>
@@ -49,7 +50,7 @@ if(isset($_GET['f']))
 				<input type="submit" value="Salvar">
 				</form>
 				<?php } ?>
-		<?php if(isset($_GET['f'])) 
+		<?php if(isset($_GET['f'])  && !isset($_GET['co']) ) 
 			   { if(!isset($_GET['d']))
 			  {
 			   $sc = new ReservaControl();
@@ -103,7 +104,11 @@ if(isset($_GET['f']))
 				</form>
 				<?php 
 				}
-			 }
+			 } if(isset($_GET['f']) && isset($_GET['co']))
+			 {
+			 	$rs = new ReservaServicoControl();
+				$rs->showByReservaOut($_GET['f']);
+			  }
 			 
 			?>
 					

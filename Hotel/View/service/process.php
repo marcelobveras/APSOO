@@ -79,7 +79,20 @@
 										  </script>
 					<?php			
 					break;
-				
+					case 8:
+						$id_reserva = $_GET['r'];
+						$reserv = new ReservaControl();
+						$reserva = $reserv->ReservaI($id_reserva);
+						$qc = new QuartoControl();
+						$qc->disponQuarto($reserva->getQuarto_id());
+						$reserv->CancelarI($_GET['r']);
+						?>
+										  <script type="text/javascript">
+										    alert("Checkout concluido");
+										    window.location = '/Hotel/View/Reservas.php';
+										  </script>
+					<?php			
+					break;
 								
 								
 				

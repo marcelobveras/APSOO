@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 date_default_timezone_set("Brazil/East");
 	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Quarto.class.php';
 class QuartoControl {

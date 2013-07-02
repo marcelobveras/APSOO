@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 	
     date_default_timezone_set("Brazil/East"); 
    
@@ -62,7 +63,7 @@ class ReservaControl {
 				
 			</tr>
 			<?php foreach ($todos as $row){
-				if (!$row['check_in'] && $row['check_in'] != null && $row['data_fim'] >= $date){
+				if ($row['check_in'] && $row['check_in'] != null && $row['data_fim'] >= $date){
 				?>
 				<tr>
 				<td><a href="/Hotel/View/service/LancarServico.php?f=<?php echo $row['id'];?>">Escolher Servi&ccedil;o</a></td>
@@ -98,7 +99,7 @@ class ReservaControl {
 				if ($row['check_in'] && $row['check_in'] != null  && $row['data_fim'] >= $date){
 				?>
 				<tr>
-					<td><a href="">Check Out</a></td>
+					<td><a href="/Hotel/View/service/AddReserva.php?f=<?php echo $row['id'];?>&co=1">Check Out</a></td>
 					<td style="display:none;"><?php echo $row['id']; ?></td>
 					<?php $hosp = new HospedeControl();
 							$quart = new QuartoControl();?>

@@ -110,10 +110,10 @@ class Quarto implements model {
 		$all;
 		$ind = 0;
 		$stmt = $this->connection->prepare("SELECT DISTINCT q.* FROM quarto q 
-					WHERE q.id NOT IN (SELECT q.id FROM quarto q, reserva r 
+					WHERE q.disponivel = 1 AND q.id NOT IN (SELECT q.id FROM quarto q, reserva r 
 										WHERE q.id = r.quarto_id
 											AND r.data_inicio < ? 
-											AND r.data_fim > ?) ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+											AND r.data_fim > ? AND r.check_in != 1) ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
 		$stmt->bindValue(1, $datefim);
 		$stmt->bindValue(2, $dateini);
 		$stmt->execute();
