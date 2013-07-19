@@ -23,7 +23,7 @@
 			<div id="content">
 				Trabalho de APSOO
 				<br>
-				primeira itera&ccedil;&atilde;o do sistema.
+				terceira itera&ccedil;&atilde;o do sistema.
 				<br>
 				Professor: Ara&uacute;jo
 				</div><!-- #content-->

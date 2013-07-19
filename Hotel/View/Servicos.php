@@ -31,7 +31,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 				
 				<?php $serv = new ServicoControl();
 					  $serv->ShowAll();
-				?>	
+				?>
 			</div><!-- #content-->
 		</div><!-- #container-->
 
