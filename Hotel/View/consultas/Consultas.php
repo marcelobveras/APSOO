@@ -6,7 +6,7 @@
 	<title>Home</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen, projection" />
 </head>
 
 <body>
@@ -21,29 +21,22 @@
 
 		<div id="container">
 			<div id="content">
-				Trabalho de APSOO
-				<br>
-				terceira itera&ccedil;&atilde;o do sistema.
-				<br>
-				Professor: Ara&uacute;jo
+				Bem vindo a pagina de consultas!
 				</div><!-- #content-->
 		</div><!-- #container-->
 
 		<aside id="sideLeft">
 			<strong>
-			<a href="/Hotel/view/index.php">Home</a>
+			<a href="/Hotel/view/index.php">Voltar</a>
 			<br>
-			<a href="/Hotel/view/Reservas.php">Fazer Reservas</a>
+			<a href="/Hotel/view/consultas/Ocupacao.php">Ocupa&ccedil;&atilde;o</a>
 			<br>
-			<a href="/Hotel/view/Checkin.php">Ver Check in</a>
+			<a href="/Hotel/view/consultas/Faturamento.php">Faturamento</a>
 			<br>
-			<a href="/Hotel/view/Servicos.php">Cadastrar Servicos</a>
+			<a href="/Hotel/view/consultas/PesquisaHospede.php">Pesquisar Hospede</a>
 			<br>
-			<a href="/Hotel/view/Hospedes.php">Cadastrar H&oacute;spede</a>
+			<a href="/Hotel/view/consultas/FaturamentoServicos.php">Faturamento por servico</a>
 			<br>
-			<a href="/Hotel/view/LancarDespesa.php">Lan&ccedil;ar Despesa</a>
-			<br>
-			<a href="/Hotel/view/Consultas.php">Consultas</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 

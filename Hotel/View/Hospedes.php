@@ -49,7 +49,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/HospedeControl.php';
 			<br>
 			<a href="/Hotel/view/LancarDespesa.php">Lan&ccedil;ar Despesa</a>
 			<br>
-			<a href="/Hotel/view/Consultas.php">Consultas</a>
+			<a href="/Hotel/view/consultas/Consultas.php">Consultas</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 
