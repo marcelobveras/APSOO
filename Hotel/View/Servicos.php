@@ -48,6 +48,8 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 			<a href="/Hotel/view/Hospedes.php">Cadastrar H&oacute;spede</a>
 			<br>
 			<a href="/Hotel/view/LancarDespesa.php">Lan&ccedil;ar Despesa</a>
+			<br>
+			<a href="/Hotel/view/Consultas.php">Consultas</a>
 			</strong> 
 			</aside><!-- #sideLeft -->
 
