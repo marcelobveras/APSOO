@@ -21,7 +21,16 @@
 
 		<div id="container">
 			<div id="content">
-				Bem vindo a pagina de consultas!
+				<h2>Data para ocupa&ccedil;&atilde;o</h2>
+				<form action="../service/process.php?funcao=31" method="post">
+				<table border="1">
+				<tr>
+				<td>Data:</td><td><input type="date" name="data" size="20" width="30" ></td>
+				</tr>
+				
+				</table>
+				<input type="submit" value="Enviar">
+				</form>
 				</div><!-- #content-->
 		</div><!-- #container-->
 

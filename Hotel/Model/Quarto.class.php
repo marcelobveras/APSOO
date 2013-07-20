@@ -128,5 +128,37 @@ class Quarto implements model {
 		}
 		return $all;
 	}
+	
+	public function CountOcup($date){
+		$all = null;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT DISTINCT COUNT(q.id) FROM quarto q, reserva r
+										WHERE q.id = r.quarto_id
+											AND r.data_inicio <= ?
+											AND r.data_fim >= ? AND (r.check_in = 0 || r.check_in = 1) ", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->bindValue(1, $date);
+		$stmt->bindValue(2, $date);
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+	
+			$all[$ind]['qtd'] = $row[0];
+			$ind++;
+		}
+		return $all;
+	}
+	public function Count(){
+		$all = null;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT DISTINCT COUNT(q.id) FROM quarto q", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+	
+			$all[$ind]['qtd'] = $row[0];
+			$ind++;
+		}
+		return $all;
+	}
 
 }

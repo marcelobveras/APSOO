@@ -1,3 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<title>Home</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen, projection" />
+</head>
+
+<body>
+
+<div id="wrapper">
+	<header id="header">
+		<br><br>
+		<h1 align="center">M&amp;M Hotel</h1>
+		</header>
+		</div>
+		
 <?php
 	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ServicoControl.php';
 	require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Control/ReservaControl.php';
@@ -93,6 +112,19 @@
 										  </script>
 					<?php			
 					break;
+					case 31:
+					$data = $_POST['data'];
+					$quart = new Quarto();
+					$ocup = $quart->CountOcup($data);
+					$total = $quart->Count();
+					?>
+						  <script type="text/javascript">
+						    alert("<?php echo $ocup[0]['qtd']." / ".$total[0]['qtd']." Quartos ocupado" ?>");
+						    window.location = '/Hotel/View/consultas/Ocupacao.php';
+						  </script>
+					<?php			
+					break;
+										
 								
 								
 				
@@ -100,3 +132,6 @@
 		default:
 		break;
 	}
+?>
+</body>
+</html>
