@@ -51,7 +51,8 @@ id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
 reserv_id  INTEGER NOT NULL,
 servic_id  INTEGER NOT NULL,
 FOREIGN KEY (reserv_id) REFERENCES reserva(id),
-FOREIGN KEY (servic_id) REFERENCES servico(id)
+FOREIGN KEY (servic_id) REFERENCES servico(id),
+data DATE not null
 );
 
 insert into tipo_quarto (descricao,preco) values ("Quarto Simples", 50.00);
@@ -72,4 +73,4 @@ insert into quarto (nome, tipo_quarto) values ("Luxo 3", 2);
 insert into quarto (nome, tipo_quarto) values ("Suite 1", 3);
 insert into quarto (nome, tipo_quarto) values ("Suite 2", 3);
 
-insert into reserva (hosp_id, quarto_id, data_inicio) values (1, 1,"2013-06-01");
+

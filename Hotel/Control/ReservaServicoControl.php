@@ -18,6 +18,8 @@ class ReservaServicoControl {
 					<td align="center">&zwnj;&zwnj;</td>
 					<td align="center" style="display:none;">Id</td>
 					<td align="center">Servi&ccedil;o</td>
+					<td align="center">Pre&ccedil;o</td>
+					<td align="center">Data</td>
 				</tr>
 				<?php
 				if($todos != null){ 
@@ -28,6 +30,8 @@ class ReservaServicoControl {
 					<td><a href="/Hotel/View/service/LancarServico.php?rs=<?php echo $row['id'];?>&d=1">Estornar</a></td>
 					<td style="display:none;"><?php echo $row['id']; ?></td>
 					<td><?php echo $s->getNome(); ?></td>
+					<td><?php echo "R$ ".$s->getPreco(); ?></td>
+					<td><input type="date" value="<?php echo $row['data'];?>" readonly></td>
 				</tr>
 				<?php }
 				} ?>
@@ -44,6 +48,7 @@ class ReservaServicoControl {
 						<td align="center" style="display:none;">Id</td>
 						<td align="center">Servi&ccedil;o</td>
 						<td align="center">Pre&ccedil;o</td>
+						<td align="center">data</td>
 					</tr>
 					<?php
 					if($todos != null){ 
@@ -56,6 +61,7 @@ class ReservaServicoControl {
 						<td><?php echo $s->getNome(); ?></td>
 						<td><?php $total+= $s->getPreco();
 							echo "R&#36; ".$s->getPreco(); ?></td>
+						<td><input type="date" value="<?php echo $row['data'];  ?>" readonly></input></td>
 					</tr>
 					<?php }
 						
@@ -65,14 +71,14 @@ class ReservaServicoControl {
 					<td>Total</td>
 				
 					<td><?php echo "R&#36; ".$total;?></td>
-			
-					<tr>
 					<td></td>
+					<tr>
+					
 					<?php $res = new ReservaControl();
 						$reseva = $res->ReservaI($id_reserva);
 						?>
-					<td><a href="/Hotel/View/service/process.php?funcao=8&r=<?php echo $reseva->getId();?>" onclick="submit();"  >Fechar conta</a></td>
-					<td></td>
+					<td align="center" colspan="4"><a href="/Hotel/View/service/process.php?funcao=8&r=<?php echo $reseva->getId();?>" onclick="submit();" >Fechar conta</a></td>
+					
 					</tr>
 					</table>
 					<?php 

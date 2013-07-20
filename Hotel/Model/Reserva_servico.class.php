@@ -6,6 +6,7 @@ class Reserva_Servico {
 	private $id;
 	private $reserv_id;
 	private $servic_id;
+	private $data;
 	
 	public function Reserva_Servico(){
 		$con = new PDOConnectionFactory();
@@ -36,9 +37,17 @@ class Reserva_Servico {
 		$this->id = $id;
 	}
 	
+	public function getData() {
+		return $this->data;
+	}
+	
+	public function setData($data) {
+		$this->data = $data;
+	}
+	
 	public function save(){
-		$stmt = $this->connection->prepare("INSERT INTO reserva_servico (reserv_id, servic_id)
-			VALUES (?,?)") or die(mysql_error());
+		$stmt = $this->connection->prepare("INSERT INTO reserva_servico (reserv_id, servic_id, data)
+			VALUES (?,?,CURDATE())") or die(mysql_error());
 	
 		$stmt->bindValue(1, $this->getReserv_id());
 		$stmt->bindValue(2, $this->getServic_id());
@@ -59,6 +68,7 @@ class Reserva_Servico {
 		$this->setId($row['id']);
 		$this->setNome($row['reserv_id']);
 		$this->setCpf($row['servic_id']);
+		$this->setData($row['data']);
 		return $this;
 	}
 	
@@ -74,6 +84,7 @@ class Reserva_Servico {
 			$all[$ind]['id'] = $row[0];
 			$all[$ind]['reserv_id'] = $row[1];
 			$all[$ind]['servic_id'] = $row[2];
+			$all[$ind]['data'] = $row[3];
 			$ind++;
 		}
 		return $all;
@@ -90,6 +101,7 @@ class Reserva_Servico {
 			$all[$ind]['id'] = $row[0];
 			$all[$ind]['id reserva'] = $row[1];
 			$all[$ind]['id servico'] = $row[2];
+			$all[$ind]['data'] = $row[3];
 			$ind++;
 		}
 		return $all;

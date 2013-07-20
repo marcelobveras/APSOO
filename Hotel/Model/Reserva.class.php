@@ -150,5 +150,28 @@ class Reserva implements model {
 		}
 		return $all;
 	}
+	public function List3Months(){
+		$all = null;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT DISTINCT r.* FROM reserva r WHERE
+											r.data_fim < DATE_FORMAT(CURDATE(), '%Y-%m-01') 
+											&& r.data_fim > DATE_FORMAT(CURDATE(), '%Y-%m-01') - INTERVAL 3 MONTH", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+	
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+	
+			$all[$ind]['id'] = $row[0];
+			$all[$ind]['hosp_id'] = $row[1];
+			$all[$ind]['quarto_id'] = $row[2];
+			$all[$ind]['data_inicio'] = $row[3];
+			$all[$ind]['data_fim'] = $row[4];
+			$all[$ind]['check_in'] = $row[5];
+			$ind++;
+		}
+		return $all;
+	}
+	
+	
 
 }
