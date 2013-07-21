@@ -106,4 +106,27 @@ class Reserva_Servico {
 		}
 		return $all;
 	}
+	
+	public function ListMonths($mesespassados){
+		$all = null;
+		$ind = 0;
+		$mesAtual = $mesespassados;
+		$mesAnterior = $mesespassados - 1;
+		$stmt = $this->connection->prepare("SELECT SUM(s.preco)
+						FROM reserva_servico rs left join servico s on rs.servic_id = s.id
+						WHERE rs.data < DATE_FORMAT( CURDATE( ) ,  '%Y-%m-01' ) - INTERVAL ? 
+						MONTH && rs.data > DATE_FORMAT( CURDATE( ) ,  '%Y-%m-01' ) - INTERVAL ? 
+						MONTH 
+						GROUP BY NULL ",
+				array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->bindValue(1, $mesAnterior);
+		$stmt->bindValue(2, $mesAtual);
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+			$all[$ind]['valor'] = $row[0];
+			$ind++;
+		}
+		return $all;
+	}
 }

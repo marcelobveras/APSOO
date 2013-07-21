@@ -150,23 +150,28 @@ class Reserva implements model {
 		}
 		return $all;
 	}
-	public function List3Months(){
+	public function ListMonths($mesespassados){
 		$all = null;
 		$ind = 0;
-		$stmt = $this->connection->prepare("SELECT DISTINCT r.* FROM reserva r WHERE
-											r.data_fim < DATE_FORMAT(CURDATE(), '%Y-%m-01') 
-											&& r.data_fim > DATE_FORMAT(CURDATE(), '%Y-%m-01') - INTERVAL 3 MONTH", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
-	
+		$mesAtual = $mesespassados;
+		$mesAnterior = $mesespassados - 1;
+		$stmt = $this->connection->prepare("SELECT SUM( (
+							r.data_fim - r.data_inicio
+							) * tq.preco ) 
+							FROM reserva r
+							LEFT JOIN quarto q ON r.quarto_id = q.id
+							LEFT JOIN tipo_quarto tq ON tq.id = q.tipo_quarto
+							WHERE r.data_fim < DATE_FORMAT( CURDATE( ) ,  '%Y-%m-01' ) - INTERVAL ? 
+							MONTH && r.data_fim > DATE_FORMAT( CURDATE( ) ,  '%Y-%m-01' ) - INTERVAL ? 
+							MONTH && ( r.check_in =0 || r.check_in =1 ) 
+							GROUP BY NULL",
+				 array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->bindValue(1, $mesAnterior);
+		$stmt->bindValue(2, $mesAtual);
 		$stmt->execute();
 		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
 		{
-	
-			$all[$ind]['id'] = $row[0];
-			$all[$ind]['hosp_id'] = $row[1];
-			$all[$ind]['quarto_id'] = $row[2];
-			$all[$ind]['data_inicio'] = $row[3];
-			$all[$ind]['data_fim'] = $row[4];
-			$all[$ind]['check_in'] = $row[5];
+			$all[$ind]['valor'] = $row[0];
 			$ind++;
 		}
 		return $all;
