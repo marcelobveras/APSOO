@@ -1,3 +1,5 @@
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Reserva.class.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Reserva_servico.class.php';  ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,7 +23,25 @@
 
 		<div id="container">
 			<div id="content">
-				Bem vindo a pagina de consultas!
+				<table border="1">
+				<tr>
+				<td>M&ecirc;s</td>
+				<td>Faturamento</td>
+				</tr>
+				<tr>
+				<td><?php echo $month = date('m'); ?></td>
+				<td><?php $r = new Reserva(); $rs = new Reserva_Servico(); 
+					$p = $r->ListMonths(1); $p2 = $rs->ListMonths(1);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>
+				</tr>
+				<tr>
+				<td><?php echo $prevmonth = date('m', strtotime("-1 month")); ?></td>
+				<td><?php $p = $r->ListMonths(2); $p2 = $rs->ListMonths(2);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>
+				</tr>
+				<tr>
+				<td><?php echo $prevmonth2 = date('m', strtotime("-2 month")) ; ?></td>
+				<td><?php $p = $r->ListMonths(3); $p2 = $rs->ListMonths(3);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>
+				</tr>
+				</table>
 				</div><!-- #content-->
 		</div><!-- #container-->
 
