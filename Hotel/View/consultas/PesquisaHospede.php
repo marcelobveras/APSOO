@@ -1,3 +1,4 @@
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Hospede.class.php';?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,7 +22,23 @@
 	<div id="container">
 			<div id="content">
 		<?php if(isset($_GET['nome'])){?>
-						
+				<?php $c = new Hospede();
+					$all = null;
+					  $all = $c->selectByName($_GET['nome']); 
+					  ?>
+					  <table border="1">
+					  <tr> <td> Nome </td> <td> Quarto </td> </tr>
+				<?php foreach ($all as $row){?>
+				<tr>
+					<td>
+						<?php echo $row['nome']; ?>	
+					</td>
+					<td>
+						<?php echo $row['quarto']; ?>	
+					</td>
+				</tr>
+				<?php  }?>
+					</table>
 		<?php }else{?>
 		
 				<form action="/Hotel/view/consultas/PesquisaHospede.php" method="get">
