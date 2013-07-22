@@ -1,3 +1,4 @@
+<?php require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Reserva_Servico.class.php';?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,7 +22,20 @@
 
 		<div id="container">
 			<div id="content">
-				Bem vindo a pagina de consultas!
+				<?php $rs = new Reserva_Servico();
+				$all = $rs->Profit();  ?>
+				<table border="1">
+				<tr> <td>Servi&ccedil;o</td>
+				<td>Pre&ccedil;o</td>
+				<td>Quantidade</td>
+				<td>Valor Ganho</td> </tr>
+				<?php foreach ($all as $row) {?>
+				<tr> <td><?php echo $row['nome'];?></td>
+				<td><?php echo "R$ ".$row['preco'];?></td>
+				<td><?php echo $row['qtd'];?></td>
+				<td><?php echo "R$ ".$row['valor'];?></td> </tr>
+				<?php } ?>
+				</table>
 				</div><!-- #content-->
 		</div><!-- #container-->
 

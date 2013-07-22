@@ -129,4 +129,24 @@ class Reserva_Servico {
 		}
 		return $all;
 	}
+	
+	public function Profit(){
+		$all = null;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT s.nome, s.preco, COUNT( s.id ) , SUM( s.preco ) 
+								FROM reserva_servico rs
+								LEFT JOIN servico s ON rs.servic_id = s.id
+								GROUP BY s.id ",
+				array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT))
+		{
+			$all[$ind]['nome'] = $row[0];
+			$all[$ind]['preco'] = $row[1];
+			$all[$ind]['qtd'] = $row[2];
+			$all[$ind]['valor'] = $row[3];
+			$ind++;
+		}
+		return $all;
+	}
 }
