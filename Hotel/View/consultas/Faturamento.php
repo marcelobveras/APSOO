@@ -33,6 +33,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Reserva_servico.class.php';
 				<td><?php $r = new Reserva(); $rs = new Reserva_Servico(); 
 					$p = $r->ListMonths(1); $p2 = $rs->ListMonths(1);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>
 				</tr>
+				<?php ?>
 				<tr>
 				<td><?php echo $prevmonth = date('m', strtotime("-1 month")); ?></td>
 				<td><?php $p = $r->ListMonths(2); $p2 = $rs->ListMonths(2);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>

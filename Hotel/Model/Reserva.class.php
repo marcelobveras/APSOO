@@ -156,7 +156,7 @@ class Reserva implements model {
 		$mesAtual = $mesespassados;
 		$mesAnterior = $mesespassados - 1;
 		$stmt = $this->connection->prepare("SELECT SUM( (
-							r.data_fim - r.data_inicio
+							datediff(r.data_fim,r.data_inicio)
 							) * tq.preco ) 
 							FROM reserva r
 							LEFT JOIN quarto q ON r.quarto_id = q.id

@@ -90,4 +90,22 @@ class Hospede implements model {
 		}	
 		return $all;
 	}
+	
+	public function selectByName($name){
+		$all;
+		$ind = 0;
+		$stmt = $this->connection->prepare("SELECT * FROM hospede where nome like '%?%' order by nome", array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL)) or die(mysql_error());
+		$stmt->bindValue(1, $name);
+		$stmt->execute();
+		while ($row = $stmt->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_NEXT)) 
+		{
+			
+			$all[$ind]['id'] = $row[0];
+			$all[$ind]['nome'] = $row[1];
+			$all[$ind]['cpf'] = $row[2];
+			$all[$ind]['sexo'] = $row[3];		
+			$ind++;	
+		}	
+		return $all;
+	}
 }
