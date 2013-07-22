@@ -18,10 +18,18 @@
 	</header><!-- #header-->
 
 	<section id="middle">
-
-		<div id="container">
+	<div id="container">
 			<div id="content">
-				Bem vindo a pagina de consultas!
+		<?php if(isset($_GET['nome'])){?>
+						
+		<?php }else{?>
+		
+				<form action="/Hotel/view/consultas/PesquisaHospede.php" method="get">
+				<input name="nome" type="text">
+				<input type="submit" value="Pesquisar">
+				</form>
+				<?php }?>
+				
 				</div><!-- #content-->
 		</div><!-- #container-->
 

@@ -31,16 +31,16 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/Hotel/Model/Reserva_servico.class.php';
 				<tr>
 				<td><?php echo $month = date('m'); ?></td>
 				<td><?php $r = new Reserva(); $rs = new Reserva_Servico(); 
-					$p = $r->ListMonths(1); $p2 = $rs->ListMonths(1);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>
+					$p = $r->ListMonths(1); $p2 = $rs->ListMonths(1);  echo "R$ ".($p[0]['valor'] + $p2[0]['valor']); ?></td>
 				</tr>
 				<?php ?>
 				<tr>
 				<td><?php echo $prevmonth = date('m', strtotime("-1 month")); ?></td>
-				<td><?php $p = $r->ListMonths(2); $p2 = $rs->ListMonths(2);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>
+				<td><?php $p = $r->ListMonths(2); $p2 = $rs->ListMonths(2);  echo "R$ ".($p[0]['valor'] + $p2[0]['valor']); ?></td>
 				</tr>
 				<tr>
 				<td><?php echo $prevmonth2 = date('m', strtotime("-2 month")) ; ?></td>
-				<td><?php $p = $r->ListMonths(3); $p2 = $rs->ListMonths(3);  echo ($p[0]['valor'] + $p2[0]['valor']); ?></td>
+				<td><?php $p = $r->ListMonths(3); $p2 = $rs->ListMonths(3);  echo "R$ ".($p[0]['valor'] + $p2[0]['valor']); ?></td>
 				</tr>
 				</table>
 				</div><!-- #content-->
