@@ -92,7 +92,7 @@ class Hospede implements model {
 	}
 	
 	public function selectByName($name){
-		$all;
+		$all = null;
 		$ind = 0;
 		$stmt = $this->connection->prepare("SELECT h.nome as hospede, q.nome as quarto
 							FROM reserva r 

@@ -26,6 +26,7 @@
 					$all = null;
 					  $all = $c->selectByName($_GET['nome']); 
 					  ?>
+					  <?php if ($all != null) {?>
 					  <table border="1">
 					  <tr> <td> Nome </td> <td> Quarto </td> </tr>
 				<?php foreach ($all as $row){?>
@@ -37,8 +38,10 @@
 						<?php echo $row['quarto']; ?>	
 					</td>
 				</tr>
+					
 				<?php  }?>
 					</table>
+					<?php }else{ echo "Nenhum hospede que contenha ".$_GET['nome']." está hospedado no momento";}?>
 		<?php }else{?>
 		
 				<form action="/Hotel/view/consultas/PesquisaHospede.php" method="get">
